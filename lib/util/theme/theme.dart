@@ -1,4 +1,5 @@
-import 'package:ecommerce/util/constants/colors/Appcolors.dart';
+import 'package:ecommerce/util/constants/AppColors.dart';
+
 import 'package:ecommerce/util/theme/custom_themes/bottom_sheet_theme.dart';
 import 'package:ecommerce/util/theme/custom_themes/checkbox_theme.dart';
 import 'package:ecommerce/util/theme/custom_themes/chip_theme.dart';

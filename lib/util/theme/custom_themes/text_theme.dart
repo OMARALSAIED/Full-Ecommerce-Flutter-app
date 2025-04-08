@@ -1,4 +1,5 @@
-import 'package:ecommerce/util/constants/colors/Appcolors.dart';
+
+import 'package:ecommerce/util/constants/AppColors.dart';
 import 'package:flutter/material.dart';
 
 class TTextTheme {
