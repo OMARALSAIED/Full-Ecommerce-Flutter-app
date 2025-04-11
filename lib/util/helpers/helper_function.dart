@@ -56,18 +56,21 @@ static bool isDarkMode(BuildContext context)
 {
   return Theme.of(context).brightness==Brightness.dark;
 }
-static Size screenSize()
+static Size screenSize(BuildContext context)
 {
-  return MediaQuery.of(Get.context!).size;
+  return MediaQuery.of(context).size;
 }
-static double screenHeight()
+
+static double screenHeight(BuildContext context)
 {
-  return MediaQuery.of(Get.context!).size.height;
+  return MediaQuery.of(context).size.height;
 }
-static double screenWidth()
+
+static double screenWidth(BuildContext context)
 {
-  return MediaQuery.of(Get.context!).size.width;
+  return MediaQuery.of(context).size.width;
 }
+
 static String getFormatedDate(DateTime date,{String format='dd MM yyyy'})
 {
   return DateFormat(format).format(date);

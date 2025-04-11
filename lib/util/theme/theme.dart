@@ -40,7 +40,7 @@ class TAppTheme {
     outlinedButtonTheme: TOutlineButtonTheme.DarkOutLineButtonTheme,
     inputDecorationTheme: TTextFiledTheme.darkInputDecortaionTheme,
     
-    textTheme: TTextTheme.lightTextTheme,
+    textTheme: TTextTheme.darkTextTheme,
     elevatedButtonTheme: TElevatedButtonTheme.darkelvatedButtonTheme
     
 

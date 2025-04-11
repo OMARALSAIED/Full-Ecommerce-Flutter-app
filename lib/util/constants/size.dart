@@ -32,8 +32,8 @@ class TSize
 
   //Default spacing between sections
 
-  static const double idefaultspace=16.0;
-  static const double spaceBtween=24.0;
+  static const double defaultspace=16.0;
+  static const double spaceBtweenItems=24.0;
   static const double spaceBtwSections=32.0; 
 
   //Border Raduis

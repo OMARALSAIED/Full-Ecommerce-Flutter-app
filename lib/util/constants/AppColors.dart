@@ -16,7 +16,7 @@ class AppColor {
 
   //Background Color
 
-  static const kLight=Color(0xFF6F6F6);
+  static const kLight=Colors.white;
   static const kDark=Color(0xFF272727);
   static const kPrimaryBackground=Color(0xFFF3FF5FF);
 
