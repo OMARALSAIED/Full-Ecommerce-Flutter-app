@@ -21,13 +21,13 @@ class TSize
 
   //Button Size
 
-  static const double ButtonHight=18.0;
+  static const double ButtonHight=54;
   static const double ButtonRadius=12.0;
   static const double ButtonWidth=120.0;
 
   //AppBar size
 
-  static const double imageThubsize=80.0;
+  static const double AppBarHeight=80.0;
 
 
   //Default spacing between sections

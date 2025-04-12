@@ -1,12 +1,12 @@
 class TImage
 
 {
-  static const String darkAppLogo="";
-  static const String lightAppLogo="";
+  static const String darkAppLogo="assets/logos/whiteMode.png";
+  static const String lightAppLogo="assets/logos/darkMode.png";
 
   //Social Logos
-  static const String google="";
-  static const String facbook="";
+  static const String facbook="assets/icons/facebook.png";
+  static const String google="assets/icons/google.png";
 
   static const String onborading1="assets/images/onborading_images/onb1.png";
   static const String onborading2="assets/images/onborading_images/onb2.png";

@@ -1,5 +1,7 @@
+import 'package:ecommerce/features/authentication/screens/login/login.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/state_manager.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -25,11 +27,11 @@ class OnboradingCotroller extends GetxController {
   void NextPage() {
     if (currentPageIndex.value == 2) {
       // Uncomment and navigate to LoginScreen when done
-      // Get.to(LoginScreen());
+      Get.to(()=> LoginScreen());
     } else {
       int page = currentPageIndex.value + 1;
       pageController.jumpToPage(page); // Move to the next page
-      currentPageIndex.value = page; // Update currentPageIndex to the next page
+     
     }
   }
 

@@ -8,7 +8,7 @@ import 'package:ecommerce/features/authentication/screens/widgets/onboarding_dot
 import 'package:ecommerce/util/constants/images_strings.dart';
 
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+
 
 import 'package:ecommerce/util/constants/text_strings.dart';
 
