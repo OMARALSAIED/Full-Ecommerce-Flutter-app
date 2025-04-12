@@ -26,15 +26,23 @@ class TText{
   static const String signupSubtitle = "Fill in your details to get started";
   static const String signupButton = "Sign Up";
   static const String alreadyHaveAccount = "Already have an account?";
+  static const String signUptitle = "Let's create your account";
   static const String loginNow = "Login Now";
 
   // Form Fields
-  static const String fullName = "Full Name";
+  static const String firstname = "First Name";
+   static const String lastname = "Last Name";
+   static const String username = "User Name";
+   static const String phoneNumber = "phone Number";
   static const String email = "Email";
   static const String password = "Password";
   static const String confirmPassword = "Confirm Password";
   static const String rememberMe = "Remember Me";
   static const String forgotPassword = "Forgot Password?";
+  static const String privacyPolicy=" PrivacyPolicy";
+  static const String iAgreeTo="I agree to";
+  static const String and=" and";
+  static const String termsOfUse=" Terms of use";
 
   // Validation Errors
   static const String emailRequired = "Email is required";
@@ -45,6 +53,7 @@ class TText{
 
   // Common
   static const String orContinueWith = "Or continue with";
+  static const String orLoginwith = "Or login with";
   static const String continueButton = "Continue";
 }
 

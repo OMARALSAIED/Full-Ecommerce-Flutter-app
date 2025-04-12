@@ -5,6 +5,7 @@ import 'package:ecommerce/features/authentication/screens/login/widgets/login_he
 import 'package:ecommerce/common/wigets/social_buttons.dart';
 
 import 'package:ecommerce/util/constants/size.dart';
+import 'package:ecommerce/util/constants/text_strings.dart';
 
 import 'package:ecommerce/util/helpers/helper_function.dart';
 
@@ -33,7 +34,7 @@ class LoginScreen extends StatelessWidget {
           
               /// -- Dividers
               const SizedBox(height: TSize.spaceBtweenItems),
-              TFormDivder(dark: dark,dividerText: "Or continue with",),
+              TFormDivder(dark: dark,dividerText: TText.orContinueWith,),
               const SizedBox(height: TSize.spaceBtweenItems),
               TSocialButtons()
             ],
