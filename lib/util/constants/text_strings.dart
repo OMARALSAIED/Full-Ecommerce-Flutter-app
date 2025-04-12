@@ -23,26 +23,38 @@ class TText{
 
   // Authentication - Sign Up
   static const String CreateAccount = "Create Account";
+    static const String Verify = "Verify";
+  static const String Verifyemail="Verify your email address!";
   static const String signupSubtitle = "Fill in your details to get started";
   static const String signupButton = "Sign Up";
   static const String alreadyHaveAccount = "Already have an account?";
   static const String signUptitle = "Let's create your account";
   static const String loginNow = "Login Now";
+  static const String submit = "Submit";
+  static const String done = "Done";
+  static const  String omarSupoort="support@codingwiths.com"; 
 
   // Form Fields
   static const String firstname = "First Name";
    static const String lastname = "Last Name";
    static const String username = "User Name";
+   static const String Resendemail = "Resend Email";
    static const String phoneNumber = "phone Number";
   static const String email = "Email";
   static const String password = "Password";
+  static const String passwordResetEmailsent = "Password Reset Email Sent";
   static const String confirmPassword = "Confirm Password";
   static const String rememberMe = "Remember Me";
   static const String forgotPassword = "Forgot Password?";
+   static const String forgotPasswordsubtitle = "Don't worry some people can forget too,enter your\nemail and we will send you a passowrd reset link";
   static const String privacyPolicy=" PrivacyPolicy";
   static const String iAgreeTo="I agree to";
   static const String and=" and";
   static const String termsOfUse=" Terms of use";
+  static const String verificationSuccess = "Congratulations! Your account has been successfully verified.";
+  static const String successsubtitle=" Welcome to Your Smarket Shopping Destnotion\nYour account is created.";
+
+
 
   // Validation Errors
   static const String emailRequired = "Email is required";

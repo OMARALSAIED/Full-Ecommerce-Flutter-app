@@ -1,4 +1,4 @@
-import 'package:ecommerce/features/authentication/screens/onborading.dart';
+import 'package:ecommerce/features/authentication/screens/onborading/onborading.dart';
 import 'package:ecommerce/util/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';

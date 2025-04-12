@@ -1,8 +1,8 @@
 import 'package:ecommerce/features/authentication/controllers/onborading_cotroller.dart';
-import 'package:ecommerce/features/authentication/screens/widgets/on_borading_nextButton.dart';
-import 'package:ecommerce/features/authentication/screens/widgets/on_borading_page.dart';
-import 'package:ecommerce/features/authentication/screens/widgets/on_borading_sikp.dart';
-import 'package:ecommerce/features/authentication/screens/widgets/onboarding_dot_navigation.dart';
+import 'package:ecommerce/features/authentication/screens/onborading/widgets/on_borading_nextButton.dart';
+import 'package:ecommerce/features/authentication/screens/onborading/widgets/on_borading_page.dart';
+import 'package:ecommerce/features/authentication/screens/onborading/widgets/on_borading_sikp.dart';
+import 'package:ecommerce/features/authentication/screens/onborading/widgets/onboarding_dot_navigation.dart';
 
 
 import 'package:ecommerce/util/constants/images_strings.dart';

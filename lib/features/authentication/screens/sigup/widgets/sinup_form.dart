@@ -1,10 +1,13 @@
 
+import 'package:ecommerce/features/authentication/screens/sigup/veryifyemail.dart';
 import 'package:ecommerce/features/authentication/screens/sigup/widgets/terms_andConitiion_checkBox.dart';
 
 import 'package:ecommerce/util/constants/size.dart';
 import 'package:ecommerce/util/constants/text_strings.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/route_manager.dart';
 import 'package:iconsax/iconsax.dart';
 
 
@@ -66,7 +69,7 @@ class TsignUpForm extends StatelessWidget {
      ),),
     
      termsAndConitiionCheckbox(dark: dark),
-     SizedBox(width: double.infinity,child: ElevatedButton(onPressed: (){}, child: const Text(TText.CreateAccount)),)
+     SizedBox(width: double.infinity,child: ElevatedButton(onPressed: (){Get.to(VeryifyEmail());}, child: const Text(TText.CreateAccount)),)
         
     ],));
   }
