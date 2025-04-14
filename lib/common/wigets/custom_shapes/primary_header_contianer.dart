@@ -1,5 +1,5 @@
 import 'package:ecommerce/common/wigets/custom_shapes/circular_Container.dart';
-import 'package:ecommerce/common/wigets/custom_shapes/curved_edges_widget.dart';
+import 'package:ecommerce/common/wigets/custom_shapes/curved_edges/curved_edges_widget.dart';
 import 'package:ecommerce/util/constants/AppColors.dart';
 import 'package:flutter/material.dart';
 

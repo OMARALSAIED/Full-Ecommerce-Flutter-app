@@ -5,8 +5,8 @@ import 'package:ecommerce/util/constants/AppColors.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-class TcartContainerIcon extends StatelessWidget {
-  const TcartContainerIcon({
+class TcartCounterIcon extends StatelessWidget {
+  const TcartCounterIcon({
     super.key, this.iconcolor, required this.onPressed,
   });
 

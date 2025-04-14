@@ -8,6 +8,8 @@ class AppColor {
   static const kSecondary=Color(0xFFFFE42B);
   static const kAccent=Color(0xFFb0c7ff);
 
+  static const transparent=Colors.transparent;
+
 
  //Text Colors
     static const kTextPrimary=Color(0xFF333333);
@@ -60,7 +62,7 @@ class AppColor {
   static const knblack=Color(0xFF232323);
   static const kDarkergrey=Color(0xFF4F4F4F);
   static const kDarkgrey=Color(0xFF939393);
-  static const grey=Color(0xFFE0E0E0);
+  static const grey=Colors.grey;
   static const kSoftgrey=Color(0xFF4F4F4);
   static const klightkgrey=Color(0xFFF9F9F9);
   

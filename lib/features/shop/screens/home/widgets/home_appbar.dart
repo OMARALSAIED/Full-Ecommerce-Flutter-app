@@ -1,6 +1,6 @@
 
 import 'package:ecommerce/common/wigets/app_bar/appbar.dart';
-import 'package:ecommerce/common/wigets/cart_menu_container/cart_menu_container.dart';
+import 'package:ecommerce/common/wigets/cart_menu_container/cart_menu_Counter.dart';
 import 'package:ecommerce/util/constants/AppColors.dart';
 import 'package:ecommerce/util/constants/text_strings.dart';
 
@@ -27,19 +27,19 @@ class HomeAppbar extends StatelessWidget {
               TText.homeAppbartitle,
               style: Theme.of(
                 context,
-              ).textTheme.labelMedium!.apply(color: AppColor.grey),
+              ).textTheme.labelMedium!.apply(color: AppColor.kwhite),
             ),
             Text(
               TText.homeAppbarsubtitle,
               style: Theme.of(context).textTheme.headlineSmall!
-                  .apply(color: AppColor.grey),
+                  .apply(color: AppColor.kwhite),
             ),
           ],
         ),
       ),
     
       actions: [
-        TcartContainerIcon(iconcolor: AppColor.kwhite,onPressed: (){},),
+        TcartCounterIcon(iconcolor: AppColor.kwhite,onPressed: (){},),
       ],
     );
   }
