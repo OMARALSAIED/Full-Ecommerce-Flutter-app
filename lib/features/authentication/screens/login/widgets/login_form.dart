@@ -1,6 +1,7 @@
 
 import 'package:ecommerce/features/authentication/screens/password_configuration/forgetPassword.dart';
 import 'package:ecommerce/features/authentication/screens/sigup/signup.dart';
+import 'package:ecommerce/navigation_menu.dart';
 import 'package:ecommerce/util/constants/size.dart';
 import 'package:ecommerce/util/constants/text_strings.dart';
 
@@ -75,6 +76,7 @@ class TLoginForm extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   // Handle login
+                  Get.to(NavigationMenu());
                 },
                 child: const Text(TText.loginNow),
               ),
