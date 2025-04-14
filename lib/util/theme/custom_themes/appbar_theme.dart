@@ -1,4 +1,5 @@
 import 'package:ecommerce/util/constants/AppColors.dart';
+import 'package:ecommerce/util/constants/size.dart';
 
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ static const lightAppBarTheme=AppBarTheme(
   scrolledUnderElevation: 0,
   backgroundColor: AppColor.ktransparent,
   surfaceTintColor: Colors.transparent,
-  iconTheme: IconThemeData(color: AppColor.kblack,size: 24),
+  iconTheme: IconThemeData(color: AppColor.kblack,size:TSize.iconmd),
   actionsIconTheme: IconThemeData(color: AppColor.kblack,size: 24),
   titleTextStyle: TextStyle(fontSize: 18,fontWeight: FontWeight.w600,color: AppColor.kblack),
 );
@@ -25,8 +26,8 @@ static const darkAppBarTheme=AppBarTheme(
   scrolledUnderElevation: 0,
   backgroundColor: AppColor.ktransparent,
   surfaceTintColor: Colors.transparent,
-  iconTheme: IconThemeData(color: AppColor.kblack,size: 24),
-  actionsIconTheme: IconThemeData(color: AppColor.kwhite,size: 24),
+  iconTheme: IconThemeData(color: AppColor.kblack,size:   TSize.iconmd),
+  actionsIconTheme: IconThemeData(color: AppColor.kwhite,size:  TSize.iconmd),
   titleTextStyle: TextStyle(fontSize: 18,fontWeight: FontWeight.w600,color: AppColor.kwhite),
 );
 }

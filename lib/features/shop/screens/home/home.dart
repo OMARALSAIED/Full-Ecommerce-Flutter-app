@@ -1,8 +1,9 @@
 
-import 'package:ecommerce/common/wigets/app_bar/appbar.dart';
 import 'package:ecommerce/common/wigets/custom_shapes/primary_header_contianer.dart';
+import 'package:ecommerce/features/shop/screens/home/widgets/home_appbar.dart';
 
 import 'package:flutter/material.dart';
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,13 +11,15 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: SingleChildScrollView(
         child: Column(
           children: [
-            TPrimaryHeaderContianer(child: Column(children: [
-              TAppbar()
-            ],)
+            TPrimaryHeaderContianer(
+              child: Column(
+                children: [
+                  HomeAppbar(),
+                ],
+              ),
             ),
           ],
         ),

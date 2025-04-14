@@ -13,34 +13,32 @@ class TPrimaryHeaderContianer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TCurvedEdgesWidget(child: Container(
-           color: AppColor.kPrimery,
-            padding: EdgeInsets.all(0),
-            child: SizedBox(
-              height: 400,
-              child: Stack(
-                
-    children: [
-      Positioned(
-        top: -150,
-        right: -250,
-        child: TCirculaContianer(
-          backgroundColor: AppColor.kwhite.withOpacity(0.1),
-        ),
-      ),
-      Positioned(
-        top: 100,
-        right: -300,
-        child: TCirculaContianer(
-          backgroundColor: AppColor.kwhite.withOpacity(0.1),
-        ),
-      ),
-      child
-    ],
+    return TCurvedEdgesWidget(child: SizedBox(
+      height: 400,
+        child: Container(
+          color: AppColor.kPrimery,
+          child: Stack(
+          
+          children: [
+            Positioned(
+              top: -150,
+              right: -250,
+              child: TCirculaContianer(
+                backgroundColor: AppColor.kwhite.withOpacity(0.1),
               ),
             ),
-            
-          ),);
+            Positioned(
+              top: 100,
+              right: -300,
+              child: TCirculaContianer(
+                backgroundColor: AppColor.kwhite.withOpacity(0.1),
+              ),
+            ),
+            child
+          ],
+                ),
+        ),
+    ),);
   }
 }
 
