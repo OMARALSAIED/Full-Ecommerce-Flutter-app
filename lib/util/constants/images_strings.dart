@@ -4,6 +4,8 @@ class TImage
   static const String darkAppLogo="assets/logos/whiteMode.png";
   static const String lightAppLogo="assets/logos/darkMode.png";
 
+  static const String shose="assets/icons/shose.png";
+
   //Social Logos
   static const String facbook="assets/icons/facebook.png";
   static const String google="assets/icons/google.png";
