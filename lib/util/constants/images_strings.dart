@@ -6,6 +6,25 @@ class TImage
 
   static const String shose="assets/icons/shose.png";
 
+    static const String snekersOf='assets/icons/brands/sinekeres.jpg';
+    static const String shose1='assets/icons/brands/shose1.jpg';
+     static const String nikee='assets/icons/brands/nike.jpg';
+
+
+       static const String addiss='aassets/icons/brands/addiss.jpg';
+    static const String applemac='assets/icons/brands/applemac.jpg';
+     static const String makeup='assets/icons/brands/makeup.jpg';
+
+  static const String product='assets/icons/brands/product.jpg';
+    static const String shoose4='assets/icons/brands/shoose4.jpg';
+     static const String shose3='assets/icons/brands/shose3.jpg';
+   
+  static const String camera='assets/icons/brands/camera.jpg';
+  static const String sinekersrem='assets/icons/brands/sinekerswithout.png';
+
+
+   
+
   //Social Logos
   static const String facbook="assets/icons/facebook.png";
   static const String google="assets/icons/google.png";

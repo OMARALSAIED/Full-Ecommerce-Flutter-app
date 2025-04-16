@@ -9,6 +9,7 @@ class AppColor {
   static const kAccent=Color(0xFFb0c7ff);
 
   static const transparent=Colors.transparent;
+    static const kgreen=Colors.green;
 
 
  //Text Colors

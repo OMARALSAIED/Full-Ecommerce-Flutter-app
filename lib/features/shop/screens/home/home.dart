@@ -1,11 +1,17 @@
-import 'package:ecommerce/common/wigets/TverticalImageTextCategories/TverticalImageTextCategories.dart';
+
 import 'package:ecommerce/common/wigets/custom_shapes/primary_header_contianer.dart';
 import 'package:ecommerce/common/wigets/custom_shapes/search_container.dart';
+import 'package:ecommerce/common/wigets/products/product_carts/product_card_vertical.dart';
+
 import 'package:ecommerce/common/wigets/text/sction_heading.dart';
+import 'package:ecommerce/features/shop/screens/home/widgets/TListHomeCategories.dart';
 import 'package:ecommerce/features/shop/screens/home/widgets/home_appbar.dart';
-import 'package:ecommerce/util/constants/AppColors.dart';
+import 'package:ecommerce/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:ecommerce/util/constants/images_strings.dart';
+
+
 import 'package:ecommerce/util/constants/size.dart';
+
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -46,25 +52,24 @@ class HomeScreen extends StatelessWidget {
                           showActionButton: true,
                         ),
 
-                        SizedBox(
-                          height: 80,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: 10,
-                            scrollDirection: Axis.horizontal,
-                            padding: const EdgeInsets.only(
-                              right: TSize.spaceBtweenItems,
-                            ),
-                            itemBuilder: (_, index) {
-                              return TverticalImageTextCategories(image: TImage.shose,title: 'Shose Categores',textcolor: AppColor.kwhite,onTap: (){},);
-                            },
-                          ),
-                        ),
+                        TListHomeCategories(),
                       ],
                     ),
                   ),
                 ],
               ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(TSize.defaultspace),
+              child: Column
+              (children:[ 
+                
+                TPromoSlider(banners: [TImage.shose1,TImage.shose,TImage.nikee],),
+                  const SizedBox(height: TSize.spaceBtwSections),
+
+                ProductCardVertical()
+              ]),
             ),
           ],
         ),
