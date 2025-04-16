@@ -1,23 +1,38 @@
 import 'package:ecommerce/util/constants/AppColors.dart';
+import 'package:ecommerce/util/constants/size.dart';
+import 'package:ecommerce/util/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 
 class CircularFavIcon extends StatelessWidget {
-  const CircularFavIcon({
+ CircularFavIcon({
     super.key,
-    required this.dark,
+  
+     this.width,
+     this.height,
+     this.size=TSize.lg,
+     this.backgroundColor,
+     this.color, required this.icon, this.onPressed,
   });
 
-  final bool dark;
+  final double? width;
+  final double? height;
+  final double? size;
+  final Color? backgroundColor;
+  final Color? color;
+  final IconData icon;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
-        color: dark ? AppColor.kblack.withOpacity(0.9) : AppColor.kwhite.withOpacity(0.9),
+        color:
+            backgroundColor!=null 
+                ? backgroundColor !: THelperfunction.isDarkMode(context)? AppColor.kblack.withOpacity(0.9)
+                : AppColor.kwhite.withOpacity(0.9)
       ),
-      child: IconButton(onPressed: (){}, icon: const Icon(Iconsax.heart5)),
+      child: IconButton(onPressed: onPressed, icon:  Icon(icon,size: size,color: color,)),
     );
   }
 }

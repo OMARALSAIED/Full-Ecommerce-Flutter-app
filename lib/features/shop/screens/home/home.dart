@@ -1,6 +1,7 @@
 
 import 'package:ecommerce/common/wigets/custom_shapes/primary_header_contianer.dart';
 import 'package:ecommerce/common/wigets/custom_shapes/search_container.dart';
+import 'package:ecommerce/common/wigets/layout/grid_layout.dart';
 import 'package:ecommerce/common/wigets/products/product_carts/product_card_vertical.dart';
 
 import 'package:ecommerce/common/wigets/text/sction_heading.dart';
@@ -24,13 +25,14 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            
             TPrimaryHeaderContianer(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   HomeAppbar(),
                   const SizedBox(height: TSize.spaceBtwSections),
-
+                 
                   TSearchContainer(
                     icon: Iconsax.search_normal,
                     text: "Search in Store",
@@ -39,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                   ),
 
                   const SizedBox(height: TSize.spaceBtwSections),
-
+                //Categories
                   Padding(
                     padding: const EdgeInsets.only(left: TSize.defaultspace),
                     child: Column(
@@ -64,11 +66,13 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(TSize.defaultspace),
               child: Column
               (children:[ 
-                
+                //--Promo Silder
                 TPromoSlider(banners: [TImage.shose1,TImage.shose,TImage.nikee],),
-                  const SizedBox(height: TSize.spaceBtwSections),
+                // const SizedBox(height: TSize.spaceBtwSections),
 
-                ProductCardVertical()
+                
+                GridViewLayout(itemCount: 4,itemBuilder: (_,index)=>const ProductCardVertical(),mainAxisExtent: 288,),
+                
               ]),
             ),
           ],
