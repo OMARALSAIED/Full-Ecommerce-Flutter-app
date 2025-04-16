@@ -29,7 +29,7 @@ class CircularFavIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(100),
         color:
             backgroundColor!=null 
-                ? backgroundColor !: THelperfunction.isDarkMode(context)? AppColor.kblack.withOpacity(0.9)
+                ? backgroundColor !: THelperfunction.isDarkMode(context)? Color(0xFF272727).withOpacity(0.9)
                 : AppColor.kwhite.withOpacity(0.9)
       ),
       child: IconButton(onPressed: onPressed, icon:  Icon(icon,size: size,color: color,)),

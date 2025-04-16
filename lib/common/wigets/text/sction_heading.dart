@@ -12,8 +12,12 @@ class TSectionHeading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title,style: Theme.of(context).textTheme.headlineSmall!.apply(color: textcolor),maxLines: 1,overflow: TextOverflow.ellipsis,),
+        Text(title,style:
+        
+         Theme.of(context).textTheme.headlineSmall!.apply(color: textcolor),maxLines: 1,overflow: TextOverflow.ellipsis,),
+        const Spacer(),
        if(showActionButton) TextButton(onPressed: onPressed, child:  Text(buttontitle,style: TextStyle(color: Colors.black),)),
       ],
     );

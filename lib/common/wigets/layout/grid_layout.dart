@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 
 class GridViewLayout extends StatelessWidget {
   const GridViewLayout({
-    super.key, required this.itemCount, this.mainAxisExtent, required this.itemBuilder,
+    super.key, required this.itemCount, this.mainAxisExtent=288
+    
+    , required this.itemBuilder,
   });
 
   @override

@@ -15,6 +15,7 @@ class TRoundedImage extends StatelessWidget {
     this.border,
     this.backgroundColor,
     this.fit,
+    this.OverlayColor,
     this.isNetworkimage = false,
     this.padding,
     this.onPressed,
@@ -31,6 +32,7 @@ class TRoundedImage extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final VoidCallback? onPressed;
   final double borderRadius;
+  final Color? OverlayColor;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,7 @@ class TRoundedImage extends StatelessWidget {
         padding: padding,
         decoration: BoxDecoration(
           border: border,
-          color: backgroundColor ?? Colors.transparent,
+          color: backgroundColor,
           borderRadius: applyImageReduise
               ? BorderRadius.circular(borderRadius)
               : null,
@@ -58,8 +60,9 @@ class TRoundedImage extends StatelessWidget {
               ? BorderRadius.circular(borderRadius)
               : BorderRadius.zero,
           child: Image(
-            image: imageProvider,
+            image:isNetworkimage ?NetworkImage(imageUrl) : AssetImage(imageUrl) as ImageProvider,
             fit: fit ?? BoxFit.cover,
+            color: OverlayColor,
           ),
         ),
       ),

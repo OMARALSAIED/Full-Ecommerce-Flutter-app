@@ -3,6 +3,7 @@ import 'package:ecommerce/common/wigets/custom_shapes/rounded_conatiner.dart';
 import 'package:ecommerce/common/wigets/icons/circularfav_icon.dart';
 
 import 'package:ecommerce/common/wigets/images/TRoundedImage.dart';
+import 'package:ecommerce/common/wigets/text/brandTitleWithVerifiedIcon.dart';
 import 'package:ecommerce/common/wigets/text/product_price_text.dart';
 import 'package:ecommerce/common/wigets/text/product_title_text.dart';
 
@@ -52,11 +53,12 @@ class ProductCardVertical extends StatelessWidget {
                     ),
                   ),
                   //--Favorite icon
-      
+                  
                   Positioned(
                     right: 0,
                     top: 0,
-                    child: CircularFavIcon(icon: Iconsax.heart4,color: AppColor.kblack,backgroundColor: AppColor.kwhite,),
+                    
+                    child: CircularFavIcon(icon: Iconsax.heart5,color: AppColor.kred,),
                   )
                   
            ] ),
@@ -68,14 +70,22 @@ class ProductCardVertical extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
            tProductTitleText(title:'Green Nike Air Shose'),
-           Row(children: [
-            Text('Nike',overflow: TextOverflow.ellipsis,maxLines: 1,style:Theme.of(context).textTheme.labelMedium ,),
-            const SizedBox(height: TSize.xs,),
-            Icon(Iconsax.verify5,color: AppColor.kPrimery,size: TSize.iconXs,)
-           ],),
-           Row(
+
+         const SizedBox(height: TSize.spaceBtweenItems/2,),
+         BrandTitleWithVerifiedIcon(title: 'Nike',textcolor: AppColor.grey,)
+      
+              ],
+            ),
+            
+            ),
+            Spacer(),
+               Row(
+               
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [ProductPriceText(price: '35.5',),
+            children: [Padding(
+              padding: const EdgeInsets.only(left: TSize.sm),
+              child: ProductPriceText(price: '35.5',),
+            ),
             Container(
               decoration: BoxDecoration(
                 color: AppColor.kblack,
@@ -92,11 +102,6 @@ class ProductCardVertical extends StatelessWidget {
             
             ],
            )
-      
-              ],
-            ),
-            
-            )
           ],
         ),
       ),
