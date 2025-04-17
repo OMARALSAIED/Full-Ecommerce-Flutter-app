@@ -26,7 +26,10 @@ class CategoryTab extends StatelessWidget {
             BrandShowCase(images: [TImage.shrit,TImage.sinekersrem,TImage.shose],),
             const SizedBox(height: TSize.spaceBtweenItems,),
             // You can add more content here depending on tab
-            TSectionHeading(title: 'You might like', onPressed: () {},showActionButton: true,),
+            Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: TSectionHeading(title: 'You might like', onPressed: () {},showActionButton: true,),
+            ),
             const SizedBox(height: TSize.spaceBtweenItems,),
             GridViewLayout(itemCount: 4, itemBuilder: (_,index)=> ProductCardVertical()),
             const SizedBox(height: TSize.spaceBtwSections,),
