@@ -1,3 +1,5 @@
+import 'package:ecommerce/util/constants/AppColors.dart';
+import 'package:ecommerce/util/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 
 class TSectionHeading extends StatelessWidget {
@@ -11,15 +13,19 @@ class TSectionHeading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(title,style:
-        
-         Theme.of(context).textTheme.headlineSmall!.apply(color: textcolor),maxLines: 1,overflow: TextOverflow.ellipsis,),
-        const Spacer(),
-       if(showActionButton) TextButton(onPressed: onPressed, child:  Text(buttontitle,style: TextStyle(color: Colors.black),)),
-      ],
+    final dark =THelperfunction.isDarkMode(context);
+    return Padding(
+      padding: const EdgeInsets.only(left: 10.0,),
+      child: Row(
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(title,style:
+          
+           Theme.of(context).textTheme.headlineSmall!.apply(color: textcolor),maxLines: 1,overflow: TextOverflow.ellipsis,),
+          const SizedBox(width: 160,),
+         if(showActionButton) TextButton(onPressed: onPressed, child:  Text(buttontitle,style: TextStyle(color: dark? AppColor.kwhite :AppColor.kblack),)),
+        ],
+      ),
     );
   }
 }

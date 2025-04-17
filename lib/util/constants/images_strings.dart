@@ -16,8 +16,9 @@ class TImage
      static const String makeup='assets/icons/brands/makeup.jpg';
 
   static const String product='assets/icons/brands/product.jpg';
-    static const String tshirt='assets/icons/brands/tshrit1.jpg';
+   
      static const String shose3='assets/icons/brands/shose3.jpg';
+     static const String shrit='assets/icons/brands/tsh.png';
 
       static const String nikelogo1='assets/icons/brands/nikelogo.png';
     //  static const String nikelogo2='assets/icons/brands/nikelogo2.png';

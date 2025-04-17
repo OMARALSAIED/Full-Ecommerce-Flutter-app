@@ -8,7 +8,6 @@ import 'package:ecommerce/common/wigets/text/sction_heading.dart';
 import 'package:ecommerce/features/shop/screens/home/widgets/TListHomeCategories.dart';
 import 'package:ecommerce/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:ecommerce/features/shop/screens/home/widgets/promo_slider.dart';
-import 'package:ecommerce/util/constants/AppColors.dart';
 import 'package:ecommerce/util/constants/images_strings.dart';
 
 
@@ -54,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                           onPressed: () {},
                           showActionButton: true,
                         ),
-
+                        
                         TListHomeCategories(),
                       ],
                     ),
@@ -70,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                 //--Promo Silder
                 TPromoSlider(banners: [TImage.shose1,TImage.shose,TImage.nikee],),
                 const SizedBox(height: TSize.spaceBtweenItems),
-               TSectionHeading(title: 'Popular Products',onPressed: (){},showActionButton: true,),
+                TSectionHeading(title: 'Popular Products',onPressed: (){},showActionButton: true,),
                         
                 
                 GridViewLayout(itemCount: 4,itemBuilder: (_,index)=>const ProductCardVertical(),mainAxisExtent: 288,),
