@@ -45,7 +45,8 @@ class ProductCardVertical extends StatelessWidget {
                   TRoundedImage(imageUrl: TImage.sinekersrem, applyImageReduise: true),
                   //Sale tag
                   Positioned(
-                    top: 12,
+                    top: 8,
+                    left: 0,
                     child: TRoundedContainer(
                       backgroundColor: AppColor.kSecondary.withOpacity(0.8),
                       padding: const EdgeInsets.symmetric(horizontal: TSize.sm,vertical: TSize.xs),
@@ -57,6 +58,7 @@ class ProductCardVertical extends StatelessWidget {
                   Positioned(
                     right: 0,
                     top: 0,
+                    bottom: 160,
                     
                     child: CircularFavIcon(icon: Iconsax.heart5,color: AppColor.kred,),
                   )

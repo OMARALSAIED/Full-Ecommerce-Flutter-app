@@ -8,7 +8,7 @@ class TImage
 
     static const String snekersOf='assets/icons/brands/sinekeres.jpg';
     static const String shose1='assets/icons/brands/shose1.jpg';
-     static const String nikee='assets/icons/brands/nike.jpg';
+    static const String nikee='assets/icons/brands/nike.jpg';
 
 
        static const String addiss='aassets/icons/brands/addiss.jpg';
@@ -19,6 +19,7 @@ class TImage
    
      static const String shose3='assets/icons/brands/shose3.jpg';
      static const String shrit='assets/icons/brands/tsh.png';
+     static const String usericon='assets/images/users/nike.jpg';
 
       static const String nikelogo1='assets/icons/brands/nikelogo.png';
     //  static const String nikelogo2='assets/icons/brands/nikelogo2.png';

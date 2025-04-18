@@ -55,23 +55,24 @@ class HomeScreen extends StatelessWidget {
                         ),
                         
                         TListHomeCategories(),
+                           const SizedBox(height: TSize.xl),
                       ],
                     ),
                   ),
                 ],
               ),
             ),
-
+            
             Padding(
               padding: const EdgeInsets.all(TSize.defaultspace),
               child: Column
               (children:[ 
                 //--Promo Silder
                 TPromoSlider(banners: [TImage.shose1,TImage.shose,TImage.nikee],),
-                const SizedBox(height: TSize.spaceBtweenItems),
+                const SizedBox(height: TSize.md),
                 TSectionHeading(title: 'Popular Products',onPressed: (){},showActionButton: true,),
                         
-                
+             
                 GridViewLayout(itemCount: 4,itemBuilder: (_,index)=>const ProductCardVertical(),mainAxisExtent: 288,),
                 
               ]),

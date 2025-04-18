@@ -9,33 +9,66 @@ import 'package:get/route_manager.dart';
 import 'package:iconsax/iconsax.dart';
 
 class TAppbar extends StatelessWidget implements PreferredSizeWidget {
-  @override
-  const TAppbar({super.key, this.title,  this.showBackArrow=false, this.leadingIcon, this.actions,  this.leadingOnPrecceds});
+  const TAppbar({
+    super.key,
+    this.title,
+    this.showBackArrow = false,
+    this.leadingIcon,
+    this.actions,
+    this.leadingOnPrecceds,
+  });
+
   final Widget? title;
   final bool showBackArrow;
   final IconData? leadingIcon;
-  final List<Widget>?  actions;
+  final List<Widget>? actions;
   final VoidCallback? leadingOnPrecceds;
-
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: TSize.md),
-      child: AppBar(
-        
-      backgroundColor: AppColor.ktransparent,
-      elevation: 0,
-      automaticallyImplyLeading: false,
-      leading:showBackArrow ? IconButton(onPressed: ()=>Get.back(), icon:const Icon(Iconsax.arrow_left) ) : leadingIcon!=null ? IconButton(onPressed: leadingOnPrecceds, icon: Icon(leadingIcon) ) :null,
-      title: title,
-      actions: actions,
+      child: PreferredSize(
+        preferredSize: preferredSize,
+        child: SafeArea(
+          child: SizedBox(
+            height: preferredSize.height,
+            child: Row(
+              children: [
+                // Back Arrow or Leading Icon
+                if (showBackArrow)
+                  IconButton(
+                    onPressed: () => Get.back(),
+                    icon: const Icon(Iconsax.arrow_left),
+                  )
+                else if (leadingIcon != null)
+                  IconButton(
+                    onPressed: leadingOnPrecceds,
+                    icon: Icon(leadingIcon),
+                  ),
+
+                // Title - takes up remaining space
+                if (title != null)
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: title!,
+                    ),
+                  ),
+
+                // Custom Spacing if needed
+                const SizedBox(width: 16),
+
+                // Actions on the right
+                if (actions != null) ...actions!,
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
-  
-  @override
-  // TODO: implement preferredSize
-  Size get preferredSize => Size.fromHeight(TDeviceUitles.getAppBarHeight());
 
+  @override
+  Size get preferredSize => Size.fromHeight(TDeviceUitles.getAppBarHeight());
 }
