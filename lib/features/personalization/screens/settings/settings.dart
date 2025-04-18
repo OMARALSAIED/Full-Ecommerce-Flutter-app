@@ -4,11 +4,14 @@ import 'package:ecommerce/common/wigets/custom_shapes/primary_header_contianer.d
 import 'package:ecommerce/common/wigets/list_tile/settings_menu_tile.dart';
 import 'package:ecommerce/common/wigets/list_tile/user_profile.dart';
 import 'package:ecommerce/common/wigets/text/sction_heading.dart';
+import 'package:ecommerce/features/personalization/screens/Profile/porfile.dart';
 import 'package:ecommerce/util/constants/AppColors.dart';
 import 'package:ecommerce/util/constants/images_strings.dart';
 
 import 'package:ecommerce/util/constants/size.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/route_manager.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -33,7 +36,7 @@ class SettingsScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  UserProfile(image: TImage.usericon,),
+                  UserProfileCard(image: TImage.usericon,onPressed: () {Get.to(Porfile());} ,),
                   const SizedBox(height: TSize.xl),
                  
            ] ),

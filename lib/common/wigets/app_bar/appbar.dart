@@ -46,7 +46,7 @@ class TAppbar extends StatelessWidget implements PreferredSizeWidget {
                     onPressed: leadingOnPrecceds,
                     icon: Icon(leadingIcon),
                   ),
-
+                 const SizedBox(width: 20,),
                 // Title - takes up remaining space
                 if (title != null)
                   Expanded(

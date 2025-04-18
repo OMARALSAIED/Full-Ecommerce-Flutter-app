@@ -4,12 +4,14 @@ import 'package:ecommerce/util/constants/AppColors.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-class UserProfile extends StatelessWidget {
-   UserProfile({
+class UserProfileCard extends StatelessWidget {
+   UserProfileCard({
+    required this.onPressed,
     required this.image,
     super.key,
   });
   final String image;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class UserProfile extends StatelessWidget {
       leading: TCircleImageContainer(image: AssetImage(image),width: 60,height: 60,),
       title: Text('Omar Alsaied',style: Theme.of(context).textTheme.headlineSmall!.apply(color: AppColor.kwhite,)),
       subtitle: Text('Omar.Alsaied.ahmad@gmail.com',style: Theme.of(context).textTheme.bodyMedium!.apply(color: AppColor.kwhite,)),
-      trailing: IconButton(onPressed: (){}, icon: Icon(Iconsax.edit, color: AppColor.kwhite,)),
+      trailing: IconButton(onPressed: onPressed, icon: Icon(Iconsax.edit, color: AppColor.kwhite,)),
       );
   }
 }
