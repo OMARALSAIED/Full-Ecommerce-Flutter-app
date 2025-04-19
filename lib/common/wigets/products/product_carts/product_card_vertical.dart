@@ -6,12 +6,15 @@ import 'package:ecommerce/common/wigets/images/TRoundedImage.dart';
 import 'package:ecommerce/common/wigets/text/brandTitleWithVerifiedIcon.dart';
 import 'package:ecommerce/common/wigets/text/product_price_text.dart';
 import 'package:ecommerce/common/wigets/text/product_title_text.dart';
+import 'package:ecommerce/features/shop/screens/product_details/product_detials.dart';
 
 import 'package:ecommerce/util/constants/AppColors.dart';
 import 'package:ecommerce/util/constants/images_strings.dart';
 import 'package:ecommerce/util/constants/size.dart';
 import 'package:ecommerce/util/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+import 'package:get/state_manager.dart';
 
 import 'package:iconsax/iconsax.dart';
 
@@ -23,6 +26,9 @@ class ProductCardVertical extends StatelessWidget {
     final dark = THelperfunction.isDarkMode(context);
 
     return GestureDetector(
+      onTap: () {
+        Get.to(ProductDetialsScreen());
+      },
       child: Container(
         width:180,
         padding: const EdgeInsets.all(1),
