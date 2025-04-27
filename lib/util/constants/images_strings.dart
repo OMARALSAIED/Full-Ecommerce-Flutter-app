@@ -60,7 +60,7 @@ class TImage
   //Animation
 
   static const String loading='assets/images/animation/loadin.json';
-
+  static const String success='assets/images/animation/success.json';
     
   
   

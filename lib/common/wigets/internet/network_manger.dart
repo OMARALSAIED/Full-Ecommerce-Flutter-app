@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:ecommerce/util/popups/loader.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
@@ -34,7 +35,7 @@ _connectivitySubscription = _connectivity.onConnectivityChanged.listen((List<Con
   _connectionStatus.value=result;
  if(_connectionStatus.value ==ConnectivityResult.none)
  {
-  Loader.warningSnackbar('No InterNet Connection', '');
+    'No InterNet Connection';
  }
 }
 

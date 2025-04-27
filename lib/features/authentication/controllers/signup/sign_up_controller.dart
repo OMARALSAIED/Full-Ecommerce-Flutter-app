@@ -27,7 +27,7 @@ class SignUpController extends GetxController {
   void signup() async {
   try {
     // Start Loading
-    FullScreenLoader.openLoadingDiloG('نقوم بمعالجة بياناتك...', TImage.loading);
+   
 
     // Check internet
     final isConnected = await NetworkManager.instance.isConnected();
@@ -55,7 +55,7 @@ class SignUpController extends GetxController {
       return;
     }
 
-
+    FullScreenLoader.openLoadingDiloG('نقوم بمعالجة بياناتك...', TImage.loading);
 
 
      // Register user
@@ -84,9 +84,10 @@ class SignUpController extends GetxController {
       await userRepository.saveUserRecord(newUser);
 
       Loader.successSnackbar('تم إنشاء الحساب', 'تم إنشاء حسابك بنجاح!');
+      
 
       // يمكنك بعدها إعادة التوجيه إلى صفحة تسجيل الدخول
-      Get.to(()=>VeryifyEmail());
+      Get.to(()=>VeryifyEmail(email: email.text.trim(),));
 
     } catch (e) {
       Loader.errorSnackbar('حدث خطأ!', e.toString());

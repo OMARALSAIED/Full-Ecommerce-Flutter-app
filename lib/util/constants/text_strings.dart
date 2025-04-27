@@ -26,6 +26,7 @@ class TText{
   // Authentication - Sign Up
   static const String CreateAccount = "Create Account";
     static const String Verify = "Verify";
+      static const String verified = "Verifiyed";
   static const String Verifyemail="Verify your email address!";
   static const String signupSubtitle = "Fill in your details to get started";
   static const String signupButton = "Sign Up";

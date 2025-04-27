@@ -1,6 +1,9 @@
 
 import 'package:ecommerce/features/authentication/screens/login/login.dart';
 import 'package:ecommerce/features/authentication/screens/onborading/onborading.dart';
+import 'package:ecommerce/features/authentication/screens/sigup/veryifyemail.dart';
+import 'package:ecommerce/navigation_menu.dart';
+import 'package:ecommerce/util/helpers/handelExpetions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -22,13 +25,26 @@ class AuthenticationRepositry extends GetxController {
 
   screenRedirect()async
   {
-    if(kDebugMode)
+    final user=_auth.currentUser;
+    if(user!=null)
+    {
+      if(user.emailVerified)
+      {
+        Get.offAll(()=>NavigationMenu());
+      }else{
+        Get.offAll(()=>VeryifyEmail(email: _auth.currentUser?.email,));
+      }
+      
+    }else{
+      if(kDebugMode)
     {
       print("================Get================");
       print(devicestorge.read('isFristTime'));
     }
     devicestorge.writeIfNull('isFristTime', true);
     devicestorge.read('isFristTime') !=true  ? null ?? Get.offAll(LoginScreen()) : Get.offAll(OnboradingScreen());
+    }
+    
   }
 
   //Reiguster
@@ -38,9 +54,39 @@ class AuthenticationRepositry extends GetxController {
     try {
       return await _auth.createUserWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      throw e.message ?? 'حدث خطأ أثناء التسجيل.';
+      throw e.message ?? 'Somthing went wronge. whene SignUp';
     } catch (e) {
-      throw 'حدث خطأ غير متوقع. الرجاء المحاولة لاحقاً.';
+      throw  handleExceptions(e);
+    }
+  }
+
+  //Mail Verification
+
+  Future<void> sendEmailVerification()async
+  {
+    
+     try{
+          await _auth.currentUser?.sendEmailVerification();
+     }on FirebaseAuthException catch (e) {
+      throw e.message ?? 'Somthing went wronge. whene Verifiy Email';
+    } catch (e) {
+       // استدعاء الدالة لمعالجة الاستثناءات
+    await handleExceptions(e);
+    }
+  }
+
+
+  Future<void>logout()async
+  {
+    try{
+      await FirebaseAuth.instance.signOut();
+      Get.offAll(()=>LoginScreen());
+    }on FirebaseAuthException catch(e)
+    {
+      throw e.message ?? 'Somthing went wronge. whene logout';
+    }catch(e)
+    {
+      await handleExceptions(e);
     }
   }
 }

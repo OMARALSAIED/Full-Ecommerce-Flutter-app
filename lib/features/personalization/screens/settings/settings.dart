@@ -4,6 +4,7 @@ import 'package:ecommerce/common/wigets/custom_shapes/primary_header_contianer.d
 import 'package:ecommerce/common/wigets/list_tile/settings_menu_tile.dart';
 import 'package:ecommerce/common/wigets/list_tile/user_profile.dart';
 import 'package:ecommerce/common/wigets/text/sction_heading.dart';
+import 'package:ecommerce/data/repositories/auth/authentication_repositry.dart';
 import 'package:ecommerce/features/personalization/screens/Profile/porfile.dart';
 import 'package:ecommerce/features/personalization/screens/address/address.dart';
 import 'package:ecommerce/features/shop/screens/orders/orders.dart';
@@ -136,7 +137,7 @@ class SettingsScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: TSize.spaceBtwSections,),
                         SizedBox(width: double.infinity,
-                        child: OutlinedButton(onPressed: (){}, child: Text('Logout')),
+                        child: OutlinedButton(onPressed: (){AuthenticationRepositry.instance.logout();}, child: Text('Logout')),
                         ),
                          const SizedBox(height: TSize.spaceBtwSections*1.2,),
                       ],

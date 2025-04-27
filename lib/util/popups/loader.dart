@@ -6,13 +6,14 @@ class Loader {
   static void successSnackbar(String message, title) {
     Get.showSnackbar(
       GetSnackBar(
+        title:  "$title✅",
         messageText: Row(
-          children: const [
+          children:  [
             Icon(Icons.check_circle, color: Colors.white),
             SizedBox(width: 10),
             Expanded(
               child: Text(
-                "تم بنجاح ✅",
+               message,
                 style: TextStyle(color: Colors.white),
               ),
             ),

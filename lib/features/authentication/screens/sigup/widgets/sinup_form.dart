@@ -1,4 +1,4 @@
-import 'package:ecommerce/features/authentication/controllers/sign_up_controller.dart';
+import 'package:ecommerce/features/authentication/controllers/signup/sign_up_controller.dart';
 import 'package:ecommerce/features/authentication/screens/sigup/widgets/terms_andConitiion_checkBox.dart';
 import 'package:ecommerce/util/constants/size.dart';
 import 'package:ecommerce/util/constants/text_strings.dart';
