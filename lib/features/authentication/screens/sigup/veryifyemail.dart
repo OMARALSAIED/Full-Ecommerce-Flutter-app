@@ -1,7 +1,6 @@
 
 import 'package:ecommerce/data/repositories/auth/authentication_repositry.dart';
 import 'package:ecommerce/features/authentication/controllers/signup/verfiy_email_controller.dart';
-import 'package:ecommerce/features/authentication/screens/login/login.dart';
 import 'package:ecommerce/util/constants/images_strings.dart';
 import 'package:ecommerce/util/constants/size.dart';
 import 'package:ecommerce/util/constants/text_strings.dart';
@@ -57,6 +56,7 @@ class VeryifyEmail extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                 controller.checkEmailVerificationStatus();
+                
                 },
                 child: const Text(TText.continueButton),
               ),
@@ -66,7 +66,7 @@ class VeryifyEmail extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: TextButton(
-              onPressed: () =>controller.sendEmailVerification(),
+              onPressed: () {},
               child: const Text(TText.Resendemail),
             ),
           ),

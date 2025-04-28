@@ -12,8 +12,9 @@ import 'package:get_storage/get_storage.dart';
 
 
 void main() async {
- final  widgetsFlutterBinding = WidgetsFlutterBinding.ensureInitialized();
   //Todo Add Widgets Binding
+ final  widgetsFlutterBinding = WidgetsFlutterBinding.ensureInitialized();
+  
   //Todo Add Init Local storage
   await GetStorage.init();
   //Todo Add Await Native Splash
@@ -21,10 +22,9 @@ void main() async {
   //Todo Add Initialize Firebase
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  ).then((FirebaseApp vlaue) {
-    Get.put(AuthenticationRepositry());
-  });
-;
+  ).then((FirebaseApp vlaue) =>
+    Get.put(AuthenticationRepositry())
+  );
 
 
   //Todo Add Ininialze Authantication

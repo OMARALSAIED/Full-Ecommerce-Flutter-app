@@ -13,8 +13,8 @@ class VerfiyEmailController extends GetxController {
 
   @override
   void onInit() {
-    setTimerforAutoRedirect();
     sendEmailVerification();
+    setTimerforAutoRedirect();
     super.onInit();
   }
 
@@ -32,16 +32,18 @@ class VerfiyEmailController extends GetxController {
     }
   }
 
-  /// Time to acutomatically an Email Verification
-  ///
+   late Timer _timer;
+
+
+
   setTimerforAutoRedirect() {
-    Timer.periodic(const Duration(seconds: 1), (timer) async {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) async {
       await FirebaseAuth.instance.currentUser?.reload();
       final user = FirebaseAuth.instance.currentUser;
       if (user?.emailVerified ?? false) {
         timer.cancel();
         Get.off(
-          SuccessScreen(
+          () => SuccessScreen(
             image: TImage.success,
             title: TText.verificationSuccess,
             subtitle: TText.verified,
@@ -52,20 +54,28 @@ class VerfiyEmailController extends GetxController {
     });
   }
 
-  ///Manualy Check if Email Verifed
-  checkEmailVerificationStatus()async
-  {
-    final currentUser =FirebaseAuth.instance.currentUser;
-    if(currentUser !=null && currentUser.emailVerified)
-    {
-       Get.off(
-          SuccessScreen(
-            image: TImage.success,
-            title: TText.verificationSuccess,
-            subtitle: TText.verified,
-            onPressed: () => AuthenticationRepositry.instance.screenRedirect(),
-          ),
-        );
+  checkEmailVerificationStatus() async {
+    final currentUser = FirebaseAuth.instance.currentUser;
+    await currentUser?.reload();
+    if (currentUser != null && currentUser.emailVerified) {
+      if (_timer.isActive) _timer.cancel();
+      Get.off(
+        () => SuccessScreen(
+          buttontitle: TText.loginNow,
+          image: TImage.accepted,
+          title: TText.verificationSuccess,
+          subtitle: TText.successsubtitle,
+          onPressed: () => AuthenticationRepositry.instance.screenRedirect(),
+        ),
+      );
     }
+  }
+
+  @override
+  void onClose() {
+    if (_timer.isActive) {
+      _timer.cancel();
+    }
+    super.onClose();
   }
 }

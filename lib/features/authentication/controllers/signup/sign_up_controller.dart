@@ -82,7 +82,7 @@ class SignUpController extends GetxController {
 
       final userRepository = Get.put(UserRepository());
       await userRepository.saveUserRecord(newUser);
-
+       FullScreenLoader.stopLoading();
       Loader.successSnackbar('تم إنشاء الحساب', 'تم إنشاء حسابك بنجاح!');
       
 
@@ -91,6 +91,7 @@ class SignUpController extends GetxController {
 
     } catch (e) {
       Loader.errorSnackbar('حدث خطأ!', e.toString());
+      FullScreenLoader.stopLoading();
     } 
   }
 }
