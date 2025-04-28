@@ -3,6 +3,7 @@ import 'package:ecommerce/features/authentication/screens/onborading/onborading.
 import 'package:ecommerce/features/authentication/screens/sigup/veryifyemail.dart';
 import 'package:ecommerce/navigation_menu.dart';
 import 'package:ecommerce/util/helpers/handelExpetions.dart';
+import 'package:ecommerce/util/popups/loader.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -43,6 +44,22 @@ void screenRedirect() async {
     }
   }
 }
+
+  //Login 
+
+  Future<UserCredential> loginWithemailAndPassword(String email,String password)async
+  {
+     try{
+      return await _auth.signInWithEmailAndPassword(email: email, password: password);
+      
+     }on FirebaseAuthException catch (e) {
+      throw e.message ?? 'Somthing went wronge. whene Login';
+    } catch (e) {
+      throw handleExceptions(e);
+    }
+  }
+  
+
 
 
   //Reiguster

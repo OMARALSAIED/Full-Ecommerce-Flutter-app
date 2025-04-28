@@ -44,7 +44,8 @@ class VerfiyEmailController extends GetxController {
         timer.cancel();
         Get.off(
           () => SuccessScreen(
-            image: TImage.success,
+            image: TImage.accepted,
+            buttontitle: TText.continueButton,
             title: TText.verificationSuccess,
             subtitle: TText.verified,
             onPressed: () => AuthenticationRepositry.instance.screenRedirect(),

@@ -1,17 +1,14 @@
 import 'package:ecommerce/common/styles/spacing_style.dart';
-import 'package:ecommerce/common/wigets/app_bar/appbar.dart';
 import 'package:ecommerce/common/wigets/divder_form.dart';
+import 'package:ecommerce/features/authentication/controllers/lgoin/login_controller.dart';
 import 'package:ecommerce/features/authentication/screens/login/widgets/login_form.dart';
 import 'package:ecommerce/features/authentication/screens/login/widgets/login_header.dart';
 import 'package:ecommerce/common/wigets/social_buttons.dart';
-
 import 'package:ecommerce/util/constants/size.dart';
 import 'package:ecommerce/util/constants/text_strings.dart';
-
 import 'package:ecommerce/util/helpers/helper_function.dart';
-import 'package:ecommerce/util/theme/widgets/theme_buttonsun.dart';
-
 import 'package:flutter/material.dart';
+import 'package:get/instance_manager.dart';
 
 
 class LoginScreen extends StatelessWidget {
@@ -19,6 +16,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  
     final dark = THelperfunction.isDarkMode(context);
 
     return Scaffold(

@@ -10,6 +10,7 @@ class SuccessScreen extends StatelessWidget {
   SuccessScreen({super.key, required this.image, required this.title, required this.subtitle,required this.onPressed,  this.buttontitle=''});
   final String image,title,subtitle;
   final String buttontitle;
+  
   void Function()? onPressed;
 
   @override
