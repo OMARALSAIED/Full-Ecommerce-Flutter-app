@@ -6,7 +6,7 @@ class UserModel {
    String firstName;
    String lastName;
    final String email;
-   String password;
+   String? password;
   final String userName;
    String phoneNumber;
    String profilePicture;
@@ -17,14 +17,25 @@ class UserModel {
     required this.firstName,
     required this.lastName,
      required this.email,
-    required this.password,
+     this.password,
     required this.userName,
     required this.phoneNumber,
     required this.profilePicture,
   });
 
   String get fullName=>'$firstName $lastName';
+  static List<String> nameParts(fullName)=>fullName.split('');
   String get formattedPhoneNo=>TFormatter.formatPhoneNumber(phoneNumber);
+  static String generateUssername(fullname)
+  {
+    List<String> nameParts=fullname.split("");
+    String firstName=nameParts[0].toLowerCase();
+    String lastName=nameParts.length>1 ? nameParts[1].toLowerCase(): "";
+
+    String camelCasUsername="$firstName$lastName";
+    String usernameWithPerfix="cwt_$camelCasUsername";
+    return usernameWithPerfix;
+  }
 
   Map<String, dynamic> toJson() {
     return {

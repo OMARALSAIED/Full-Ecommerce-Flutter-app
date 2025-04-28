@@ -22,25 +22,25 @@ class HomeAppbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return TAppbar(
     
-      title: Padding(
-        padding: const EdgeInsets.only(right: 90),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          
-          children: [
-            Text(
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 6),
+            child: Text(
               TText.homeAppbartitle,
               style: Theme.of(
                 context,
               ).textTheme.labelMedium!.apply(color: AppColor.kwhite),
             ),
-            Text(
-              TText.homeAppbarsubtitle,
-              style: Theme.of(context).textTheme.headlineSmall!
-                  .apply(color: AppColor.kwhite),
-            ),
-          ],
-        ),
+          ),
+          Text(
+            TText.homeAppbarsubtitle,
+            style: Theme.of(context).textTheme.headlineSmall!
+                .apply(color: AppColor.kwhite),
+          ),
+        ],
       ),
     
       actions: [
