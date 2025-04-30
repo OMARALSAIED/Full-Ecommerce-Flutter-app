@@ -96,6 +96,27 @@ class AuthenticationRepositry extends GetxController {
       await handleExceptions(e);
     }
   }
+   // ✨ Forget Password
+  Future<void> sendPasswordResetEmail( String email,
+  )
+   async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    }  on FirebaseAuthException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    }on FirebaseException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on SthandelFormatExceptions catch(_)
+    {
+      throw SthandelFormatExceptions();
+    }on SthandelPlatformExceptions catch(e)
+    {
+      throw SthandelPlatformExceptions(e.code).message;
+    }catch(e)
+    {
+      throw 'Some went Wrong whene reset password. Please try again';
+    }
+  }
 
   //Google Sign In
 
