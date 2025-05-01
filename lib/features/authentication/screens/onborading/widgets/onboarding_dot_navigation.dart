@@ -22,7 +22,7 @@ class OnBoardingdotNavigation extends StatelessWidget {
       
       child: SmoothPageIndicator(
         onDotClicked: controller.dotNavigationClik,
-        controller: controller.pageController,count: 3,effect: ExpandingDotsEffect(activeDotColor: THelperfunction.isDarkMode(context) ? AppColor.kLight : AppColor.kDark,dotHeight: 6),));
+        controller: controller.pageController,count: 3,effect: ExpandingDotsEffect(activeDotColor: dark ? AppColor.kLight : AppColor.kDark,dotHeight: 6),));
   }
 }
 

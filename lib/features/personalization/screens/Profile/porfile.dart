@@ -1,11 +1,15 @@
 import 'package:ecommerce/common/wigets/app_bar/appbar.dart';
 import 'package:ecommerce/common/wigets/custom_shapes/circula_image_container.dart';
 import 'package:ecommerce/common/wigets/text/sction_heading.dart';
+import 'package:ecommerce/features/personalization/controllers/user_controller.dart';
+import 'package:ecommerce/features/personalization/screens/Profile/widgets/ChangeName.dart';
 import 'package:ecommerce/features/personalization/screens/Profile/widgets/profile_menu.dart';
 import 'package:ecommerce/util/constants/AppColors.dart';
 import 'package:ecommerce/util/constants/images_strings.dart';
 import 'package:ecommerce/util/constants/size.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/instance_manager.dart';
 import 'package:iconsax/iconsax.dart';
 
 class Porfile extends StatelessWidget {
@@ -13,6 +17,7 @@ class Porfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     final  controller=UserController.instance;
     return Scaffold(
       appBar: TAppbar(
         showBackArrow: true,
@@ -49,13 +54,15 @@ class Porfile extends StatelessWidget {
               const SizedBox(height: TSize.spaceBtweenItems),
               profile_menu(
                 title1: "Name",
-                title2: "Omar Alsaied",
+                title2: controller.user.value.fullName,
                 icon: Iconsax.arrow_right_34,
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(ChangeName());
+                },
               ),
                 profile_menu(
                 title1: "Username",
-                title2: "Omar Alsaied",
+                title2: controller.user.value.userName,
                 icon: Iconsax.arrow_right_34,
                 onPressed: () {},
               ),
@@ -65,19 +72,19 @@ class Porfile extends StatelessWidget {
                const SizedBox(height: TSize.spaceBtweenItems),
                 profile_menu(
                 title1: "User ID",
-                title2: "125544",
+                title2: controller.user.value.id,
                 icon: Iconsax.copy,
                 onPressed: () {},
               ),
                    profile_menu(
                 title1: "E-mail",
-                title2: "omarsaie@gmail.com",
+                title2: controller.user.value.email,
                 icon: Iconsax.arrow_right_34,
                 onPressed: () {},
               ),
                    profile_menu(
                 title1: "Phone Number",
-                title2: "00996118474",
+                title2: controller.user.value.phoneNumber,
                 icon: Iconsax.arrow_right_34,
                 onPressed: () {},
               ),
@@ -96,7 +103,9 @@ class Porfile extends StatelessWidget {
               const Divider(),
               const SizedBox(height: TSize.md,),
               Center(
-                child: TextButton(onPressed: (){}
+                child: TextButton(onPressed: (){
+                  controller.deleteAccountWaringPoup();
+                }
                 , child: Text('Close Account',style: TextStyle(color: AppColor.kred),)),
               )
             ],

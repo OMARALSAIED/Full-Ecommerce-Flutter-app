@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce/data/repositories/auth/authentication_repositry.dart';
 import 'package:ecommerce/features/authentication/models/sign_up_model.dart';
 import 'package:ecommerce/util/valdatores/auth_Exceptions.dart';
 import 'package:ecommerce/util/valdatores/format_Exceptions.dart';
@@ -25,6 +28,79 @@ class UserRepository {
       throw SthandelPlatformExceptions(e.code).message;
     } catch (e) {
       'فشل حفظ بيانات المستخدم.';
+    }
+  }
+
+  //Function to fetch user deatiles based on user ID
+   Future<UserModel> fetchUserDeatiles() async {
+    try {
+   final   documentsnapshot= await _db.collection('Users').doc(AuthenticationRepositry.instance.authUser?.uid).get();
+      if(documentsnapshot.exists)//have data inside
+      { 
+          return UserModel.fromSnapshot(documentsnapshot);
+      }
+      else{
+        return UserModel.empty();
+      }
+    } on FirebaseAuthException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on FirebaseException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on SthandelFormatExceptions catch (_) {
+      throw SthandelFormatExceptions();
+    } on SthandelPlatformExceptions catch (e) {
+      throw SthandelPlatformExceptions(e.code).message;
+    } catch (e) {
+      'فشل حفظ بيانات المستخدم.';
+    }
+    return throw 'Somthing Went Wrong Whene tried to fetch Data ';
+  }
+  //Function to update user data in firestore
+Future<void> updateUserDeatiles(UserModel updateUser) async {
+    try {
+      await _db.collection('Users').doc(updateUser.id).update(updateUser.toJson());
+    } on FirebaseAuthException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on FirebaseException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on SthandelFormatExceptions catch (_) {
+      throw SthandelFormatExceptions();
+    } on SthandelPlatformExceptions catch (e) {
+      throw SthandelPlatformExceptions(e.code).message;
+    } catch (e) {
+      'Somthing Went Wrong Whene tried to update Data ';
+    }
+  }
+  //Update any fileds in specific User  Collection
+Future<void> updateSingleFiled(Map<String,dynamic> Json) async {
+    try {
+      await _db.collection('Users').doc(AuthenticationRepositry.instance.authUser?.uid).update(Json);
+    } on FirebaseAuthException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on FirebaseException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on SthandelFormatExceptions catch (_) {
+      throw SthandelFormatExceptions();
+    } on SthandelPlatformExceptions catch (e) {
+      throw SthandelPlatformExceptions(e.code).message;
+    } catch (e) {
+      'Somthing Went Wrong Whene tried to update single Data ';;
+    }
+  }
+  //Function to remove user data from Firestore
+  Future<void> removeUserRecord(String userId) async {
+    try {
+      await _db.collection('Users').doc(userId).delete();
+    } on FirebaseAuthException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on FirebaseException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on SthandelFormatExceptions catch (_) {
+      throw SthandelFormatExceptions();
+    } on SthandelPlatformExceptions catch (e) {
+      throw SthandelPlatformExceptions(e.code).message;
+    } catch (e) {
+      'Somthing Went Wrong Whene tried to delete Data ';
     }
   }
 }

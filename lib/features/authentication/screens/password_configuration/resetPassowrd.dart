@@ -11,6 +11,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/route_manager.dart';
 
 
+// ignore: must_be_immutable
 class Resetpassowrd extends StatelessWidget {
    Resetpassowrd({super.key,required  this.email});
 

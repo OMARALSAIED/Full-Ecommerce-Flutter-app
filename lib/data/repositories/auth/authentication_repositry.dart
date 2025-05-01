@@ -3,6 +3,8 @@ import 'package:ecommerce/features/authentication/screens/onborading/onborading.
 import 'package:ecommerce/features/authentication/screens/sigup/veryifyemail.dart';
 import 'package:ecommerce/navigation_menu.dart';
 import 'package:ecommerce/util/helpers/handelExpetions.dart';
+import 'package:ecommerce/util/popups/full_screen_loader.dart';
+import 'package:ecommerce/util/popups/loader.dart';
 import 'package:ecommerce/util/valdatores/auth_Exceptions.dart';
 import 'package:ecommerce/util/valdatores/format_Exceptions.dart';
 import 'package:ecommerce/util/valdatores/platform_Exceptioon.dart';
@@ -19,6 +21,7 @@ class AuthenticationRepositry extends GetxController {
 
   final devicestorge = GetStorage();
   final _auth = FirebaseAuth.instance;
+  User? get authUser=>_auth.currentUser;
 
   @override
   void onReady() {
@@ -151,8 +154,67 @@ class AuthenticationRepositry extends GetxController {
         return null;
       }
     }
+    return null;
 
   }
+
+  // Delete Account
+Future<void> deleteAccount() async {
+  try {
+    final user = _auth.currentUser;
+
+    if (user != null) {
+      await user.delete();
+      // Optional: Clear local storage and redirect to login
+      await devicestorge.erase();
+      Get.offAll(() => LoginScreen());
+    } else {
+      throw 'No authenticated user found.';
+    }
+  } on FirebaseAuthException catch (e) {
+    if (e.code == 'requires-recent-login') {
+      throw 'Please reauthenticate before deleting your account.';
+    }
+    throw SthandelAuthExpetions(e.code).message;
+  } on FirebaseException catch (e) {
+    throw SthandelAuthExpetions(e.code).message;
+  } on SthandelFormatExceptions catch (_) {
+    throw SthandelFormatExceptions();
+  } on SthandelPlatformExceptions catch (e) {
+    throw SthandelPlatformExceptions(e.code).message;
+  } catch (e) {
+    if (kDebugMode) {
+      print('Delete account error: $e');
+    }
+    throw 'Something went wrong when trying to delete the account.';
+  }
+}
+
+//Reauthenticate
+
+Future<void> reauthenticateWithEmailAndPassword(String email,String password)async
+{
+   try{
+    AuthCredential credential=EmailAuthProvider.credential(email: email, password: password);
+
+    await _auth.currentUser!.reauthenticateWithCredential(credential);
+   }on FirebaseAuthException catch (e) {
+    if (e.code == 'requires-recent-login') {
+      throw 'Please reauthenticate before deleting your account.';
+    }
+    throw SthandelAuthExpetions(e.code).message;
+  } on FirebaseException catch (e) {
+    throw SthandelAuthExpetions(e.code).message;
+  } on SthandelFormatExceptions catch (_) {
+    throw SthandelFormatExceptions();
+  } on SthandelPlatformExceptions catch (e) {
+    throw SthandelPlatformExceptions(e.code).message;
+  } catch (e) {
+    FullScreenLoader.stopLoading();
+    Loader.errorSnackbar(e.toString(), 'Oh Snap!');
+  }
+}
+
 
   //Logout
 
