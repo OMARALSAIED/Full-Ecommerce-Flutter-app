@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/route_manager.dart';
 import 'package:intl/intl.dart';
 
 class THelperfunction
@@ -86,7 +84,7 @@ static List<T>removeDuplicates<T>(List<T> list)
   final wrappList =<Widget>[];
   for(var i=0;i<widgets.length;i+=rowsize)
   {
-    final rowChildern=widgets.sublist(i,i+rowsize>widgets.length?widgets.length:i+rowsize);
+    widgets.sublist(i,i+rowsize>widgets.length?widgets.length:i+rowsize);
   }
 
   return wrappList;

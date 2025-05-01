@@ -1,5 +1,5 @@
-import 'dart:convert';
 
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce/data/repositories/auth/authentication_repositry.dart';
 import 'package:ecommerce/features/authentication/models/sign_up_model.dart';
@@ -7,7 +7,9 @@ import 'package:ecommerce/util/valdatores/auth_Exceptions.dart';
 import 'package:ecommerce/util/valdatores/format_Exceptions.dart';
 import 'package:ecommerce/util/valdatores/platform_Exceptioon.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:get/get.dart';
 
 class UserRepository {
@@ -101,6 +103,27 @@ Future<void> updateSingleFiled(Map<String,dynamic> Json) async {
       throw SthandelPlatformExceptions(e.code).message;
     } catch (e) {
       'Somthing Went Wrong Whene tried to delete Data ';
+    }
+  }
+
+  //Upload any Image
+  Future<String> uploadImage(String path,XFile image)async
+  { 
+     try{
+        final ref=FirebaseStorage.instance.ref(path).child(image.name);//space to store 
+        await ref.putFile(File(image.path));//store the image inside space
+        final url=await ref.getDownloadURL();
+        return  url;
+     }on FirebaseAuthException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on FirebaseException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on SthandelFormatExceptions catch (_) {
+      throw SthandelFormatExceptions();
+    } on SthandelPlatformExceptions catch (e) {
+      throw SthandelPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'Somthing Went Wrong Please try again';
     }
   }
 }

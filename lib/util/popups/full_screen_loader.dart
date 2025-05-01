@@ -1,6 +1,4 @@
 import 'package:ecommerce/common/wigets/Animation/animation.dart';
-import 'package:ecommerce/util/constants/AppColors.dart';
-import 'package:ecommerce/util/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';

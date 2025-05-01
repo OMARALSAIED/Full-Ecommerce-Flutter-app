@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 
+// ignore: must_be_immutable
 class SuccessScreen extends StatelessWidget {
   SuccessScreen({super.key, required this.image, required this.title, required this.subtitle,required this.onPressed,  this.buttontitle=''});
   final String image,title,subtitle;

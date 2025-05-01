@@ -7,7 +7,7 @@ import 'package:ecommerce/common/wigets/text/sction_heading.dart';
 import 'package:ecommerce/data/repositories/auth/authentication_repositry.dart';
 
 
-import 'package:ecommerce/features/personalization/screens/Profile/porfile.dart';
+import 'package:ecommerce/features/personalization/screens/Profile/profile.dart';
 import 'package:ecommerce/features/personalization/screens/address/address.dart';
 import 'package:ecommerce/features/shop/screens/orders/orders.dart';
 import 'package:ecommerce/util/constants/AppColors.dart';

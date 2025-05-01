@@ -1,7 +1,7 @@
 import 'package:ecommerce/common/wigets/internet/network_manger.dart';
 import 'package:ecommerce/data/repositories/user/user_repository.dart';
 import 'package:ecommerce/features/personalization/controllers/user_controller.dart';
-import 'package:ecommerce/features/personalization/screens/Profile/porfile.dart';
+import 'package:ecommerce/features/personalization/screens/Profile/profile.dart';
 import 'package:ecommerce/util/constants/images_strings.dart';
 
 import 'package:ecommerce/util/popups/full_screen_loader.dart';

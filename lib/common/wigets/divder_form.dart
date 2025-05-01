@@ -1,5 +1,5 @@
 import 'package:ecommerce/util/constants/AppColors.dart';
-import 'package:ecommerce/util/constants/text_strings.dart';
+
 import 'package:flutter/material.dart';
 
 

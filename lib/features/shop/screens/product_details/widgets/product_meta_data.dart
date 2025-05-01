@@ -65,7 +65,7 @@ class ProductMetaData extends StatelessWidget {
               
               width: 32,
               height: 32,
-              image: dark ?AssetImage(TImage.nikelogo3) : AssetImage(TImage.nikelogo2) ,),
+              image: dark ?TImage.nikelogo3 : TImage.nikelogo2 ,),
               const SizedBox(width: 10,),
             Expanded(child: BrandTitleWithVerifiedIcon(title: 'Nike')),
             

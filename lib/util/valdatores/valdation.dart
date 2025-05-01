@@ -16,6 +16,7 @@ class AppValdation {
     {
       return '$filedName is required';
     }
+    return null;
   }
 
   static bool isPhoneNumberValid(String phoneNumber) {

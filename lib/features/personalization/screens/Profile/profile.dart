@@ -17,7 +17,7 @@ class Porfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final  controller=UserController.instance;
+    final controller = UserController.instance;
     return Scaffold(
       appBar: TAppbar(
         showBackArrow: true,
@@ -35,11 +35,18 @@ class Porfile extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    TCircleImageContainer(
-                      image: AssetImage(TImage.nikee),
-                      width: 80,
-                      height: 80,
-                    ),
+                    Obx(() {
+                      final networkimage = controller.user.value.profilePicture;
+                      final _ =
+                          networkimage.isNotEmpty ? networkimage : TImage.usericon;
+                      return TCircleImageContainer(
+                        
+                        image: TImage.nikee,//image replce
+                        width: 80,
+                        height: 80,
+                        
+                      );
+                    }),
                     TextButton(
                       onPressed: () {},
                       child: Text('Change Profile Picture'),
@@ -60,7 +67,7 @@ class Porfile extends StatelessWidget {
                   Get.to(ChangeName());
                 },
               ),
-                profile_menu(
+              profile_menu(
                 title1: "Username",
                 title2: controller.user.value.userName,
                 icon: Iconsax.arrow_right_34,
@@ -69,45 +76,50 @@ class Porfile extends StatelessWidget {
               const Divider(),
               const SizedBox(height: TSize.spaceBtweenItems),
               TSectionHeading(title: 'Personal Information'),
-               const SizedBox(height: TSize.spaceBtweenItems),
-                profile_menu(
+              const SizedBox(height: TSize.spaceBtweenItems),
+              profile_menu(
                 title1: "User ID",
                 title2: controller.user.value.id,
                 icon: Iconsax.copy,
                 onPressed: () {},
               ),
-                   profile_menu(
+              profile_menu(
                 title1: "E-mail",
                 title2: controller.user.value.email,
                 icon: Iconsax.arrow_right_34,
                 onPressed: () {},
               ),
-                   profile_menu(
+              profile_menu(
                 title1: "Phone Number",
                 title2: controller.user.value.phoneNumber,
                 icon: Iconsax.arrow_right_34,
                 onPressed: () {},
               ),
-                   profile_menu(
+              profile_menu(
                 title1: "Gender",
                 title2: "Male",
                 icon: Iconsax.arrow_right_34,
                 onPressed: () {},
               ),
-                   profile_menu(
+              profile_menu(
                 title1: "Date of Brith",
                 title2: "2001/3/5",
                 icon: Iconsax.arrow_right_34,
                 onPressed: () {},
               ),
               const Divider(),
-              const SizedBox(height: TSize.md,),
+              const SizedBox(height: TSize.md),
               Center(
-                child: TextButton(onPressed: (){
-                  controller.deleteAccountWaringPoup();
-                }
-                , child: Text('Close Account',style: TextStyle(color: AppColor.kred),)),
-              )
+                child: TextButton(
+                  onPressed: () {
+                    controller.deleteAccountWaringPoup();
+                  },
+                  child: Text(
+                    'Close Account',
+                    style: TextStyle(color: AppColor.kred),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

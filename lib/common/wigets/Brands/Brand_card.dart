@@ -9,7 +9,7 @@ import 'package:ecommerce/util/constants/images_strings.dart';
 import 'package:ecommerce/util/constants/size.dart';
 import 'package:ecommerce/util/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:iconsax/iconsax.dart';
 
 
