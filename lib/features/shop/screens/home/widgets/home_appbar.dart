@@ -4,7 +4,7 @@ import 'package:ecommerce/features/personalization/controllers/user_controller.d
 import 'package:ecommerce/features/shop/screens/cart/CartScreen.dart';
 import 'package:ecommerce/util/constants/AppColors.dart';
 import 'package:ecommerce/util/constants/text_strings.dart';
-import 'package:ecommerce/util/helpers/shimmer_loader.dart';
+import 'package:ecommerce/common/wigets/Shimmer/shimmer_loader.dart';
 import 'package:ecommerce/util/theme/widgets/theme_buttonsun.dart';
 
 import 'package:flutter/material.dart';

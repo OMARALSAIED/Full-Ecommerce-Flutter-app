@@ -2,13 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce/util/constants/AppColors.dart';
 import 'package:ecommerce/util/constants/size.dart';
 import 'package:ecommerce/util/helpers/helper_function.dart';
-import 'package:ecommerce/util/helpers/shimmer_loader.dart';
+import 'package:ecommerce/common/wigets/Shimmer/shimmer_loader.dart';
 import 'package:flutter/material.dart';
 
 class TCircleImageContainer extends StatelessWidget {
   final double? radius;
-  final double? width;
-  final double? height;
+  final double width;
+  final double height;
   final double padding;
   final String image;
   final BoxFit fit;
@@ -24,9 +24,9 @@ class TCircleImageContainer extends StatelessWidget {
     required this.image,
     this.padding = TSize.sm,
     this.radius,
-    this.width,
+    this.width=50,
     this.backgroundColor,
-    this.height,
+    this.height=50,
     this.fit = BoxFit.cover,
     this.onTap,
     this.isNetworkImage = false,
@@ -35,13 +35,13 @@ class TCircleImageContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double size = radius != null ? radius! * 2 : width ?? 80;
+    
 
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: size,
-        height: size,
+        width: width,
+        height: height,
         padding: EdgeInsets.all(padding),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
@@ -64,7 +64,7 @@ class TCircleImageContainer extends StatelessWidget {
                   fit: fit,
                   color: overlayColor,
                   progressIndicatorBuilder: (context, url, downloadProgress) =>
-                      OShimmereffect(width: size, height: size),
+                      OShimmereffect(width: width, height: height),
                   errorWidget: (context, url, error) =>
                       const Icon(Icons.error, size: 32),
                 )

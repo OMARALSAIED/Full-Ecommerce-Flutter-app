@@ -10,7 +10,6 @@ import 'package:ecommerce/util/constants/size.dart';
 import 'package:ecommerce/util/popups/full_screen_loader.dart';
 import 'package:ecommerce/util/popups/loader.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
