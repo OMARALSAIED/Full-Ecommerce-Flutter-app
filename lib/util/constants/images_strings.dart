@@ -57,6 +57,10 @@ class TImage
   //Banners image
 
   static const String baner1='assets/images/banners/shoseban.jpg';
+  static const String phonban2='assets/images/banners/phban.jpg';
+  static const String shritban='assets/images/banners/ban2.jpg';
+  static const String shritbanman='assets/images/banners/ban3.jpg';
+  static const String baner6='assets/images/banners/shoseban.jpg';
   //Animation
 
   static const String loading='assets/images/animation/loadin.json';

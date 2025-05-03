@@ -2,17 +2,18 @@ import 'package:ecommerce/common/wigets/Brands/brand_show_case.dart';
 import 'package:ecommerce/common/wigets/layout/grid_layout.dart';
 import 'package:ecommerce/common/wigets/products/product_carts/product_card_vertical.dart';
 import 'package:ecommerce/common/wigets/text/sction_heading.dart';
+import 'package:ecommerce/features/shop/models/category_model.dart';
 import 'package:ecommerce/util/constants/images_strings.dart';
 import 'package:ecommerce/util/constants/size.dart';
 import 'package:flutter/material.dart';
 
 class CategoryTab extends StatelessWidget {
   const CategoryTab({
-    super.key,
+    super.key, required this.category,
   });
 
   
-
+final CategoryModel category;
   @override
   Widget build(BuildContext context) {
     return ListView(
