@@ -2,7 +2,6 @@ import 'package:ecommerce/common/wigets/text/sction_heading.dart';
 import 'package:ecommerce/util/constants/AppColors.dart';
 import 'package:ecommerce/util/constants/size.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 
 class BillingAddressSecition extends StatelessWidget {
   const BillingAddressSecition({super.key});

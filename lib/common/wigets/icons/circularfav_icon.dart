@@ -1,5 +1,4 @@
 import 'package:ecommerce/util/constants/AppColors.dart';
-import 'package:ecommerce/util/constants/size.dart';
 import 'package:ecommerce/util/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 
@@ -31,8 +30,8 @@ class CircularFavIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(100),
         color:
             backgroundColor!=null 
-                ? backgroundColor !: THelperfunction.isDarkMode(context)? Color(0xFF272727).withOpacity(0.9)
-                : AppColor.kwhite.withOpacity(0.9)
+                ? backgroundColor !: THelperfunction.isDarkMode(context)? Color(0xFF272727).withOpacity(0.3)
+                : AppColor.kwhite.withOpacity(0.3)
       ),
       child: IconButton(onPressed: onPressed, icon:  Icon(icon,size: size,color: color,)),
     );

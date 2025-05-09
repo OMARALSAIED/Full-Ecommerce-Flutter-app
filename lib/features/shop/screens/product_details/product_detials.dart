@@ -1,4 +1,5 @@
 import 'package:ecommerce/common/wigets/text/sction_heading.dart';
+import 'package:ecommerce/features/shop/models/ProductModel.dart';
 import 'package:ecommerce/features/shop/screens/product_details/widgets/BottomAddtoCart.dart';
 import 'package:ecommerce/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:ecommerce/features/shop/screens/product_details/widgets/product_image_slider.dart';
@@ -15,7 +16,8 @@ import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductDetialsScreen extends StatelessWidget {
-  const ProductDetialsScreen({super.key});
+  const ProductDetialsScreen({super.key, required this.product});
+ final ProductModel product;
 
   @override
   Widget build(BuildContext context) {

@@ -65,6 +65,13 @@ class TImage
 
   static const String loading='assets/images/animation/loadin.json';
   static const String success='assets/images/animation/success.json';
+//Categories
+  static const String Clothes='assets/images/categories/Clothes.jpg';
+  static const String Cosmetics='assets/images/categories/Cosmetics.jpg';
+  static const String Electronics='assets/images/categories/Electronics.jpg';
+  static const String Furnituer='assets/images/categories/Furnituer.jpg';
+  static const String Jewlery='assets/images/categories/Jewlery.jpg';
+  
     
   
   

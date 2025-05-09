@@ -1,7 +1,6 @@
 import 'package:ecommerce/common/wigets/Brands/Brand_card.dart';
 import 'package:ecommerce/common/wigets/app_bar/appbar.dart';
 import 'package:ecommerce/common/wigets/layout/grid_layout.dart';
-
 import 'package:ecommerce/common/wigets/text/sction_heading.dart';
 import 'package:ecommerce/features/shop/screens/Brands/brand_product.dart';
 import 'package:ecommerce/util/constants/size.dart';
@@ -10,7 +9,8 @@ import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 
 class AllBrandsScreen extends StatelessWidget {
-  const AllBrandsScreen({super.key});
+  const AllBrandsScreen({super.key,});
+
 
   @override
   Widget build(BuildContext context) {

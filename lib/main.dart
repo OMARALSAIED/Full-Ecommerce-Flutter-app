@@ -12,7 +12,7 @@ import 'package:get_storage/get_storage.dart';
 void main() async {
   //Todo Add Widgets Binding
  final  widgetsFlutterBinding = WidgetsFlutterBinding.ensureInitialized();
-  
+
   //Todo Add Init Local storage
   await GetStorage.init();
   //Todo Add Await Native Splash
@@ -24,9 +24,7 @@ void main() async {
     Get.put(AuthenticationRepositry())
   );
 
-
   //Todo Add Ininialze Authantication
   
-
   runApp(MyApp());
 }

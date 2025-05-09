@@ -39,15 +39,18 @@ class TRoundedImage extends StatelessWidget {
 
  @override
 Widget build(BuildContext context) {
-  final image = Image(
-    image: isNetworkimage
-        ? NetworkImage(imageUrl)
-        : AssetImage(imageUrl) as ImageProvider,
-    fit: fit ?? BoxFit.cover,
-    color: OverlayColor,
-    width: width ?? double.infinity,
-    height: height ?? 200,
-  );
+ final image = Image(
+  image: isNetworkimage
+      ? NetworkImage(imageUrl)
+      : AssetImage(imageUrl) as ImageProvider,
+  fit: fit ?? BoxFit.cover,
+  color: OverlayColor,
+  width: width ?? double.infinity,
+  height: height ?? 200,
+  errorBuilder: (context, error, stackTrace) =>
+      const Center(child: Icon(Icons.broken_image, color: Colors.red)),
+);
+
 
   return GestureDetector(
     onTap: onPressed,

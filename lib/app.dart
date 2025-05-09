@@ -1,5 +1,6 @@
 import 'package:ecommerce/bindings/general_bindings.dart';
 import 'package:ecommerce/features/authentication/screens/onborading/onborading.dart';
+import 'package:ecommerce/routes/App_routes.dart';
 import 'package:ecommerce/util/theme/controller/theme_controller.dart';
 import 'package:ecommerce/util/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       themeMode: themeController.isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
       theme:TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
+      getPages: AppRouter.pages,
       initialBinding: GeneralBindings(),
       home:OnboradingScreen(),
     );

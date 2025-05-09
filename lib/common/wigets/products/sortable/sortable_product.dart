@@ -1,14 +1,17 @@
 
 import 'package:ecommerce/common/wigets/layout/grid_layout.dart';
 import 'package:ecommerce/common/wigets/products/product_carts/product_card_vertical.dart';
+import 'package:ecommerce/features/shop/models/ProductModel.dart';
+
 import 'package:ecommerce/util/constants/size.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 class SortableProduct extends StatelessWidget {
-  const SortableProduct({
-    super.key,
+  const SortableProduct({super.key, 
+   
   });
+  
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class SortableProduct extends StatelessWidget {
           
           ),
           const SizedBox(height: TSize.spaceBtwSections,),
-          GridViewLayout(itemCount: 6, itemBuilder: (_,index)=>ProductCardVertical())
+          GridViewLayout(itemCount: 6, itemBuilder: (_,index)=>ProductCardVertical(product: ProductModel.empty()))
     ],);
   }
 }

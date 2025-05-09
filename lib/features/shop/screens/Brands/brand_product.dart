@@ -5,7 +5,8 @@ import 'package:ecommerce/util/constants/size.dart';
 import 'package:flutter/material.dart';
 
 class BrandProduct extends StatelessWidget {
-  const BrandProduct({super.key});
+  const BrandProduct({super.key,});
+
 
   @override
   Widget build(BuildContext context) {

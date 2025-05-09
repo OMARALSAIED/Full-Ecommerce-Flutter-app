@@ -2,6 +2,7 @@ import 'package:ecommerce/common/wigets/app_bar/appbar.dart';
 import 'package:ecommerce/common/wigets/icons/circularfav_icon.dart';
 import 'package:ecommerce/common/wigets/layout/grid_layout.dart';
 import 'package:ecommerce/common/wigets/products/product_carts/product_card_vertical.dart';
+import 'package:ecommerce/features/shop/models/ProductModel.dart';
 
 import 'package:ecommerce/util/constants/size.dart';
 
@@ -27,7 +28,7 @@ class FavouriteScreen extends StatelessWidget {
       SingleChildScrollView(
         child: Padding(padding: EdgeInsets.all(TSize.defaultspace),
         child: Column(children: [
-          GridViewLayout(itemCount: 6, itemBuilder:(_,index)=>ProductCardVertical() )
+          GridViewLayout(itemCount: 6, itemBuilder:(_,index)=>ProductCardVertical(product: ProductModel.empty()) )
         ],),
         ),
       )
