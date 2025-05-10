@@ -4,7 +4,7 @@ import 'package:ecommerce/common/wigets/images/TRoundedImage.dart';
 import 'package:ecommerce/common/wigets/text/brandTitleWithVerifiedIcon.dart';
 import 'package:ecommerce/common/wigets/text/product_price_text.dart';
 import 'package:ecommerce/common/wigets/text/product_title_text.dart';
-import 'package:ecommerce/features/shop/controllers/product_controller.dart';
+import 'package:ecommerce/features/shop/controllers/product/product_controller.dart';
 import 'package:ecommerce/features/shop/models/ProductModel.dart';
 import 'package:ecommerce/features/shop/screens/product_details/product_detials.dart';
 import 'package:ecommerce/util/constants/AppColors.dart';

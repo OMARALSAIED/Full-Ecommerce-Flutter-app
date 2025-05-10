@@ -1,10 +1,9 @@
-
-
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce/common/wigets/Shimmer/shimmer_loader.dart';
 import 'package:ecommerce/util/constants/AppColors.dart';
 import 'package:ecommerce/util/constants/size.dart';
 
 import 'package:flutter/material.dart';
-
 
 class TRoundedImage extends StatelessWidget {
   const TRoundedImage({
@@ -13,14 +12,14 @@ class TRoundedImage extends StatelessWidget {
     this.height,
     required this.imageUrl,
     this.applyImageReduise = true,
-    this.showborder=false,
+    this.showborder = false,
     this.backgroundColor,
     this.fit,
     this.OverlayColor,
     this.isNetworkimage = false,
     this.padding,
     this.onPressed,
-    this.borderColor=AppColor.kBorderPrimary,
+    this.borderColor = AppColor.kBorderPrimary,
     this.borderRadius = TSize.md,
   });
 
@@ -35,41 +34,42 @@ class TRoundedImage extends StatelessWidget {
   final VoidCallback? onPressed;
   final double borderRadius;
   final Color borderColor;
-  final Color? OverlayColor ;
+  final Color? OverlayColor;
 
- @override
-Widget build(BuildContext context) {
- final image = Image(
-  image: isNetworkimage
-      ? NetworkImage(imageUrl)
-      : AssetImage(imageUrl) as ImageProvider,
-  fit: fit ?? BoxFit.cover,
-  color: OverlayColor,
-  width: width ?? double.infinity,
-  height: height ?? 200,
-  errorBuilder: (context, error, stackTrace) =>
-      const Center(child: Icon(Icons.broken_image, color: Colors.red)),
-);
-
-
-  return GestureDetector(
-    onTap: onPressed,
-    child: Container(
-      padding: padding,
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        border: showborder ? Border.all(color: borderColor) : null,
-        borderRadius: applyImageReduise
-            ? BorderRadius.circular(borderRadius)
-            : null,
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          return ClipRRect(
+            borderRadius: applyImageReduise ? BorderRadius.circular(borderRadius) : BorderRadius.zero,
+            child: Container(
+              width: width ?? constraints.maxWidth,
+              height: height ?? constraints.maxHeight,
+              padding: padding,
+              decoration: BoxDecoration(
+                color: backgroundColor,
+                border: showborder ? Border.all(color: borderColor) : null,
+              ),
+              child: isNetworkimage
+                  ? CachedNetworkImage(
+                      imageUrl: imageUrl,
+                      fit: fit ?? BoxFit.cover,
+                      progressIndicatorBuilder: (context, url, progress) => OShimmereffect(
+                        width: width ?? constraints.maxWidth,
+                        height: height ?? constraints.maxHeight,
+                      ),
+                      errorWidget: (context, url, error) => const Icon(Icons.error),
+                    )
+                  : Image(
+                      image: AssetImage(imageUrl),
+                      fit: fit ?? BoxFit.cover,
+                    ),
+            ),
+          );
+        },
       ),
-      child: ClipRRect(
-        borderRadius: applyImageReduise
-            ? BorderRadius.circular(borderRadius)
-            : BorderRadius.zero,
-        child: image,
-      ),
-    ),
-  );
-}
+    );
+  }
 }

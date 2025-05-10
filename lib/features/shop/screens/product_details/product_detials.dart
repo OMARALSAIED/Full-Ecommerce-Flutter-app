@@ -10,6 +10,7 @@ import 'package:ecommerce/util/constants/size.dart';
 
 import 'package:ecommerce/util/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/route_manager.dart';
 import 'package:iconsax/iconsax.dart';
@@ -22,12 +23,14 @@ class ProductDetialsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = THelperfunction.isDarkMode(context);
+  
     return Scaffold(
       bottomNavigationBar: Bottomaddtocart(),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ProductImageSlider(dark: dark),
+            
+            ProductImageSlider(dark: dark, product: product,),
             Padding(
               padding: EdgeInsets.only(
                 right: TSize.defaultspace,

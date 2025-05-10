@@ -39,39 +39,37 @@ print("Assigning products to featuredProducts...");
 }
 
 
-  String getProductPrice(ProductModel product) {
-    double smallsetPrice = double.infinity;
-    double largestPrice = 0.0;
-    if (product.productType == ProductType.single.toString()) {
-      return (product.salePrice > 0 ? product.salePrice : product.price)
-          .toString();
-    } else {
-      for (var variation in product.productVariation!) {
-        double priceToConsider =
-            variation.salePrice > 0.0 ? variation.salePrice : variation.price;
+String getProductPrice(ProductModel product) {
+  double smallsetPrice = double.infinity;
+  double largestPrice = 0.0;
+  if (product.productType == ProductType.single.toString()) {
+    return (product.salePrice > 0 ? product.salePrice : product.price).toString();
+  } else {
+    for (var variation in product.productVariation?? []) {
+      double priceToConsider = variation.salePrice > 0.0 ? variation.salePrice : variation.price;
 
-        if (priceToConsider < smallsetPrice) {
-          smallsetPrice = priceToConsider;
-        }
-        if(priceToConsider >largestPrice)
-        {
-          largestPrice=priceToConsider;
-        }
+      if (priceToConsider < smallsetPrice) {
+        smallsetPrice = priceToConsider;
       }
-      if (smallsetPrice.isEqual(largestPrice)) {
-        return largestPrice.toString();
-      } else {
-        return '$smallsetPrice -  \$$largestPrice';
+      if (priceToConsider > largestPrice) {
+        largestPrice = priceToConsider;
       }
     }
+    if (smallsetPrice.isEqual(largestPrice)) {
+      return largestPrice.toString();
+    } else {
+      return '\$${smallsetPrice} - \$${largestPrice}';
+    }
   }
+}
 
 String? calculateSalePercentage(double originalPrice, double? salePrice) {
   if (salePrice == null || salePrice <= 0 || originalPrice <= 0) return null;
 
-  double percentage = ((originalPrice - salePrice) / originalPrice) * 100;
-  return percentage.toStringAsFixed(0);
+  double remainingPercentage = (salePrice / originalPrice) * 100;
+  return remainingPercentage.toStringAsFixed(0);
 }
+
 
 
   String getProductStockStatus(int stock) {
