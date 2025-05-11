@@ -25,7 +25,7 @@ class ProductController extends GetxController {
     print("Products fetched: ${products.length}");
     
     for (var product in products) {
-      print("Product Title: ${product.title}");
+      print("Product Price: ${product.price}");
       print("Is Featured: ${product.IsFeatured}");
     }
 print("Assigning products to featuredProducts...");

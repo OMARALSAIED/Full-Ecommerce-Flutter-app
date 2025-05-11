@@ -6,13 +6,11 @@ import 'package:ecommerce/common/wigets/images/TRoundedImage.dart';
 import 'package:ecommerce/features/shop/controllers/product/images_controller.dart';
 import 'package:ecommerce/features/shop/models/ProductModel.dart';
 import 'package:ecommerce/util/constants/AppColors.dart';
-import 'package:ecommerce/util/constants/images_strings.dart';
 import 'package:ecommerce/util/constants/size.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 import 'package:iconsax/iconsax.dart';
-
 
 class ProductImageSlider extends StatelessWidget {
   const ProductImageSlider({
@@ -20,14 +18,14 @@ class ProductImageSlider extends StatelessWidget {
     required this.product,
     required this.dark,
   });
-   final ProductModel product;
+  final ProductModel product;
 
   final bool dark;
 
   @override
   Widget build(BuildContext context) {
-    final  controller=Get.put(ImagesController());
-    final images=controller.getAllProductImages(product);
+    final controller = Get.put(ImagesController());
+    final images = controller.getAllProductImages(product);
     return TCurvedEdgesWidget(
       child: Container(
         color: dark ? AppColor.kDarkgrey : AppColor.kwhite,
@@ -36,14 +34,15 @@ class ProductImageSlider extends StatelessWidget {
             SizedBox(
               height: 400,
               child: Padding(
-                padding: const EdgeInsets.all(
-                  TSize.ProuductImageRaduis * 2,
-                ),
+                padding: const EdgeInsets.all(TSize.ProuductImageRaduis * 2),
                 child: Center(
-                  child:Obx((){
-                    final image=controller.selectedProductImage.value;
-                    return
-                    CachedNetworkImage(imageUrl: image);} )
+                  child: Obx(() {
+                    final image = controller.selectedProductImage.value;
+                    return GestureDetector(
+                      onTap: () => controller.showEnlargeImage(image),
+                      child: CachedNetworkImage(imageUrl: image),
+                    );
+                  }),
                 ),
               ),
             ),
@@ -56,32 +55,41 @@ class ProductImageSlider extends StatelessWidget {
                 child: ListView.separated(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
+
                   physics: const AlwaysScrollableScrollPhysics(),
-                  separatorBuilder: (_,__)=> const SizedBox(width: TSize.spaceBtweenItems,),
+                  separatorBuilder:
+                      (_, __) => const SizedBox(width: TSize.spaceBtweenItems),
                   itemCount: images.length,
-                  itemBuilder: (_, index)=>Obx((){
-                    final imageseleCted=controller.selectedProductImage.value==images[index];
-                    return TRoundedImage(
-                      width: 80,
-                      isNetworkimage: true,
-                      backgroundColor: dark ? AppColor.kDark : AppColor.kwhite,
-                      borderColor: AppColor.kPrimery,
-                      padding: const EdgeInsets.all(TSize.sm),
-                      imageUrl: images[index]);
-                  }) 
-                 
-                  
-                  
+                  itemBuilder:
+                      (_, index) => Obx(() {
+                        final imageseleCted =
+                            controller.selectedProductImage.value ==
+                            images[index];
+                        return TRoundedImage(
+                          width: 80,
+                          isNetworkimage: true,
+                          backgroundColor:
+                              dark ? AppColor.kDark : AppColor.kwhite,
+                          borderColor: AppColor.kPrimery,
+                          padding: const EdgeInsets.all(TSize.sm),
+                          imageUrl: images[index],
+
+                          onPressed:
+                              () =>
+                                  controller.selectedProductImage.value =
+                                      images[index],
+                        );
+                      }),
                 ),
               ),
             ),
             TAppbar(
               showBackArrow: true,
               actions: [
-                const SizedBox(width:250,),
-                CircularFavIcon(icon: Iconsax.heart5,color: AppColor.kred,)
+                const SizedBox(width: 250),
+                CircularFavIcon(icon: Iconsax.heart5, color: AppColor.kred),
               ],
-            )
+            ),
           ],
         ),
       ),

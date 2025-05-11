@@ -37,7 +37,7 @@ class TPromoSlider extends StatelessWidget {
                   .map(
                     (banner) => TRoundedImage(
 
-                      imageUrl: banner.imageUrl ?? '',
+                      imageUrl: banner.imageUrl,
                      
                       isNetworkimage: true,
                       borderRadius: TSize.cardRadiusLg,

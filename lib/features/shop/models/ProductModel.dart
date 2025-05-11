@@ -6,7 +6,7 @@ import 'package:ecommerce/features/shop/models/productAttributeModel.dart';
 class ProductModel {
   String id;
   
-  String stock;
+  int stock;
   String? sku;
   double price;
   double salePrice;
@@ -43,7 +43,7 @@ class ProductModel {
 
   static ProductModel empty() => ProductModel(
     id: '',
-    stock: '',
+    stock: 0,
     price: 0.0,
     title: '',
     thumbnail: '',
@@ -80,7 +80,7 @@ class ProductModel {
 factory ProductModel.fromJson(Map<String, dynamic> json) {
   return ProductModel(
     id: json['id'] ?? '',
-    stock: json['Stock'] ?? '',
+    stock: json['Stock'] ?? 0,
     
     sku: json['SKU'],
     price: (json['Price'] as num?)?.toDouble() ?? 0.0,

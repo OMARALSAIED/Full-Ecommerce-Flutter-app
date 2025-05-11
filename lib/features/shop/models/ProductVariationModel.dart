@@ -6,7 +6,7 @@ class ProductVariationModel {
    String description;
    double price;
    double salePrice;
-   String stock;
+   int stock;
 
    Map<String ,String> attributeValues;
 
@@ -18,7 +18,7 @@ class ProductVariationModel {
      this.description='',
      this.price=0.0,
      this.salePrice=0.0,
-     this.stock='23',
+     this.stock=0,
      required this.attributeValues
   });
 

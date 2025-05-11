@@ -6,6 +6,7 @@ import 'package:ecommerce/features/shop/screens/product_details/widgets/product_
 import 'package:ecommerce/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:ecommerce/features/shop/screens/product_details/widgets/reating_andShare.dart';
 import 'package:ecommerce/features/shop/screens/product_review/product_reviews.dart';
+import 'package:ecommerce/util/constants/enums.dart';
 import 'package:ecommerce/util/constants/size.dart';
 
 import 'package:ecommerce/util/helpers/helper_function.dart';
@@ -40,8 +41,10 @@ class ProductDetialsScreen extends StatelessWidget {
               child: Column(
                 children: [
                   RatingAndshare(),
-                  ProductMetaData(),
-                  ProductAttributes(),
+                  ProductMetaData(product: product,),
+                  if(product.productType==ProductType.variable.toString())  ProductAttributes(product: product,),
+                  if(product.productType==ProductType.variable.toString()) const SizedBox(height: TSize.spaceBtwSections,),
+                 
                   const SizedBox(height: TSize.spaceBtwSections),
                   SizedBox(
                     width: double.infinity,
@@ -54,7 +57,7 @@ class ProductDetialsScreen extends StatelessWidget {
                   const TSectionHeading(title: 'Description'),
                   const SizedBox(height: TSize.spaceBtwSections),
                   ReadMoreText(
-                    "Featuring an ultra-lightweight frame and shock-absorbing sole tech, these shoes are designed to keep you moving fast, whether you're hitting the pavement or dominating the court.",
+                    product.Description ?? '',
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: ' Show more',
