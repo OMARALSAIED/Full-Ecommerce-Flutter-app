@@ -139,5 +139,35 @@ factory ProductModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> snapsho
   );
 }
 
+static ProductModel fromQuerySnapshot(QueryDocumentSnapshot<Object?> document) {
+  final data = document.data() as Map<String ,dynamic>;
+  
+  return ProductModel(
+    id: document.id,
+    stock: data['Stock'] ?? '',
+    sku: data['SKU'] ?? '',
+    price: double.tryParse(data['Price'].toString()) ?? 0.0,
+    salePrice: double.tryParse(data['SalePrice'].toString()) ?? 0.0,
+    title: data['Title'] ?? '',
+    thumbnail: data['Thumbnail'] ?? '',
+    Description: data['Descrption'] ?? '',  // ✅ تعديل التهجئة هنا
+    IsFeatured: data['IsFeatured'] ?? false,
+    brand: data['Brand'] != null ? BrandModel.fromJson(data['Brand']) : null,
+    categoryId: data['CategoryId'] ?? '',
+    images: data['Images'] != null ? List<String>.from(data['Images']) : [],
+    productType: data['ProductsType'] ?? '',  // ✅ تعديل التهجئة هنا
+    productAttributes: data['ProductAttributes'] != null
+        ? (data['ProductAttributes'] as List<dynamic>)
+            .map((e) => productAttributeModel.fromJson(e))
+            .toList()
+        : [],
+    productVariation: data['ProductVariations'] != null
+        ? (data['ProductVariations'] as List<dynamic>)
+            .map((e) => ProductVariationModel.fromJson(e))
+            .toList()
+        : [],
+  );
+}
+
 
 }

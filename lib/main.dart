@@ -23,6 +23,7 @@ void main() async {
   ).then((FirebaseApp vlaue) =>
     Get.put(AuthenticationRepositry())
   );
+   
 
   //Todo Add Ininialze Authantication
   

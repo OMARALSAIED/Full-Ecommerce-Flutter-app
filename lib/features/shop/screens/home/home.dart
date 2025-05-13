@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller =Get.put(ProductController());
+    final controller = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -73,7 +73,13 @@ class HomeScreen extends StatelessWidget {
                   TSectionHeading(
                     title: 'Popular Products',
                     onPressed: () {
-                      Get.to(AllProducts());
+                      Get.to(
+                        AllProducts(
+                          title: 'Popular Products',
+                         
+                          futuerMethod: controller.fetchAllFeaturedProduct(),
+                        ),
+                      );
                     },
                     showActionButton: true,
                   ),

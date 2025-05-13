@@ -18,7 +18,7 @@ class BrandProduct extends StatelessWidget {
           child: Column(children: [
            TBrandCard(showborder: true,),
            SizedBox(height: TSize.spaceBtwSections,),
-           SortableProduct()
+           SortableProduct(product: [],)
     ],),
         ),
       ),

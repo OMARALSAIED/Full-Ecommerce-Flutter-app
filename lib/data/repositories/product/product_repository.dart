@@ -34,8 +34,51 @@ Future<List<ProductModel>> getFeaturedProduct() async {
     throw 'Something Went Wrong. Please try again';
   }
 }
+Future<List<ProductModel>> getAllFeaturedProduct() async {
+  try {
+    final snapshot = await _db
+        .collection('Products')
+        .where('IsFeatured', isEqualTo: true)
+       
+        .get();
 
-  Future<void> uploadDummyData(List<ProductModel> products) async {
+    print("Documents fetched: ${snapshot.docs.length}");
+    for (var doc in snapshot.docs) {
+      print("Fetched Data: ${doc.data()}");
+    }
+
+    return snapshot.docs
+        .map((e) => ProductModel.fromSnapshot(e))
+        .toList();
+  } catch (e) {
+    print("Error in getFeaturedProduct: $e");
+    throw 'Something Went Wrong. Please try again';
+  }
+}
+
+
+Future<List<ProductModel>> fetchProductsByQuery(Query query) async {
+  try {
+  
+      final querySnapshot=await query.get();
+      final List<ProductModel> productList=querySnapshot.docs.map((doc)=>ProductModel.fromQuerySnapshot(doc)).toList();
+      return productList;
+
+  }   on FirebaseAuthException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on FirebaseException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on SthandelFormatExceptions catch (_) {
+      throw SthandelFormatExceptions();
+    } on SthandelPlatformExceptions catch (e) {
+      throw SthandelPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'Somthing Went Wrong Please try again';
+    
+    }
+
+}
+ Future<void> uploadDummyData(List<ProductModel> products) async {
     try {
       final storge = Get.put(FirebaseStorgeService());
 
@@ -100,4 +143,5 @@ Future<List<ProductModel>> getFeaturedProduct() async {
       throw 'Somthing Went Wrong Please try again';
     }
   }
+
 }

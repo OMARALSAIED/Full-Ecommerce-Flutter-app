@@ -62,6 +62,10 @@ class Variationcontroller extends GetxController {
 
     update(); // تحديث الواجهة
   }
+  String getVariationPrice()
+  {
+    return (selectedVariation.value.salePrice>0 ? selectedVariation.value.salePrice : selectedVariation.value.price).toString();
+  }
 
   bool _isSameAttributeValues(
     Map<String, String> variationAttributes,

@@ -38,6 +38,19 @@ print("Assigning products to featuredProducts...");
   }
 }
 
+ Future<List<ProductModel>> fetchAllFeaturedProduct() async {
+  try {
+    
+    final products = await productRepository.getAllFeaturedProduct();
+   
+    return products;
+  } catch (e) {
+    Loader.errorSnackbar(e.toString(), 'Oh Snap!');
+    print("Error fetching products: $e");
+    return [];
+  } 
+}
+
 
 String getProductPrice(ProductModel product) {
   double smallsetPrice = double.infinity;
