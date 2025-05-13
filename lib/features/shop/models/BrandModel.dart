@@ -5,7 +5,7 @@ class BrandModel {
   final String Name;
   final String Image;
   final bool? IsFeatured;
-  final String? ProductCount;
+  final int? ProductCount;
   final DateTime? createdAt;
 
   BrandModel({
@@ -23,7 +23,7 @@ class BrandModel {
       Name: '',
       Image: '',
       IsFeatured: false,
-      ProductCount: '',
+      ProductCount: 0,
       createdAt: DateTime.now(),
     );
   }
@@ -54,6 +54,7 @@ class BrandModel {
 
   factory BrandModel.fromSnapshot(DocumentSnapshot snapshot) {
     final data = snapshot.data() as Map<String, dynamic>;
+     print("Fetched Data: $data");  
     return BrandModel(
       Id: snapshot.id,
       Name: data['Name'] ?? '',

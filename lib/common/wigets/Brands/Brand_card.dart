@@ -3,9 +3,9 @@
 import 'package:ecommerce/common/wigets/custom_shapes/rounded_conatiner.dart';
 
 import 'package:ecommerce/common/wigets/images/TRoundedImage.dart';
+import 'package:ecommerce/features/shop/models/BrandModel.dart';
 
 import 'package:ecommerce/util/constants/AppColors.dart';
-import 'package:ecommerce/util/constants/images_strings.dart';
 import 'package:ecommerce/util/constants/size.dart';
 import 'package:ecommerce/util/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
@@ -16,12 +16,13 @@ import 'package:iconsax/iconsax.dart';
 
 class TBrandCard extends StatelessWidget {
   TBrandCard({
+    required this.brand,
     this.showborder=false,
     super.key,
     this.onTap
     
   });
-
+  BrandModel brand;
   final bool showborder;
   final Function()? onTap;
 
@@ -40,8 +41,8 @@ class TBrandCard extends StatelessWidget {
                 showborder: false,
                 height: 56,
                 width: 56,
-                isNetworkimage: false,
-                imageUrl: TImage.nikelogo1,
+                isNetworkimage: true,
+                imageUrl: brand.Image,
                 backgroundColor: AppColor.transparent,
                 OverlayColor:
                     THelperfunction.isDarkMode(context)
@@ -59,7 +60,7 @@ class TBrandCard extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'Nike',
+                        brand.Name,
                         style: TextStyle(
                           fontSize: TSize.md,
                         ),
@@ -73,7 +74,7 @@ class TBrandCard extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    '256 productes',
+                    '${brand.ProductCount ?? 0} ProductCount',
                     overflow: TextOverflow.ellipsis,
                     style:
                         Theme.of(

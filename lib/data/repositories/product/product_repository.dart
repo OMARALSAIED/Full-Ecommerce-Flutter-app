@@ -78,6 +78,28 @@ Future<List<ProductModel>> fetchProductsByQuery(Query query) async {
     }
 
 }
+
+Future<List<ProductModel>> getProductFromBrand({required String brandId,int limit=-1})async
+{
+  try{
+    final querySnapshot=limit==-1 ?await _db.collection('Products').where('Brand.Id',isEqualTo: brandId).get():
+    await _db.collection('Products').where('Brand.Id',isEqualTo: brandId).limit(limit).get();
+    final products=querySnapshot.docs.map((doc)=>ProductModel.fromSnapshot(doc)).toList();
+    return products;
+
+  }on FirebaseAuthException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on FirebaseException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on SthandelFormatExceptions catch (_) {
+      throw SthandelFormatExceptions();
+    } on SthandelPlatformExceptions catch (e) {
+      throw SthandelPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'Somthing Went Wrong Please try again';
+    
+    }
+}
  Future<void> uploadDummyData(List<ProductModel> products) async {
     try {
       final storge = Get.put(FirebaseStorgeService());

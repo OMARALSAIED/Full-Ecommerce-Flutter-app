@@ -1,4 +1,5 @@
 import 'package:ecommerce/common/wigets/Brands/Brand_card.dart';
+import 'package:ecommerce/common/wigets/Shimmer/brands_shimmer.dart';
 import 'package:ecommerce/common/wigets/app_bar/appbar.dart';
 import 'package:ecommerce/common/wigets/app_bar/tabBar.dart';
 import 'package:ecommerce/common/wigets/products/cart/cart_menu_icon.dart';
@@ -6,7 +7,9 @@ import 'package:ecommerce/common/wigets/custom_shapes/search_container.dart';
 import 'package:ecommerce/common/wigets/layout/grid_layout.dart';
 import 'package:ecommerce/common/wigets/text/sction_heading.dart';
 import 'package:ecommerce/features/shop/controllers/category.controller.dart';
+import 'package:ecommerce/features/shop/controllers/product/brand_controller.dart';
 import 'package:ecommerce/features/shop/screens/Brands/all_brands.dart';
+import 'package:ecommerce/features/shop/screens/Brands/brand_product.dart';
 import 'package:ecommerce/features/shop/screens/store/widgets/CategoryTab.dart';
 import 'package:ecommerce/util/constants/AppColors.dart';
 import 'package:ecommerce/util/constants/size.dart';
@@ -21,7 +24,9 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     final categories =CategoryController.insatnce.featuredCategories;
+    final brandController=Get.put(BrandController());
     return DefaultTabController(
       length: categories.length,
       child: Scaffold(
@@ -67,11 +72,21 @@ class StoreScreen extends StatelessWidget {
                         showActionButton: true,
                       ),
                       const SizedBox(height: TSize.spaceBtweenItems / 1.5),
-                      GridViewLayout(
+                     Obx((){
+                      if(brandController.isLoading.value)return BrandsShimmer();
+                      if(brandController.featuredBrands.isEmpty)
+                      {
+                        return Center(child: Text('Not Found Data!',style: Theme.of(context).textTheme.bodyMedium!.apply(color: AppColor.kwhite),),);
+                      }
+                      return  GridViewLayout(
                         mainAxisExtent: 80,
-                        itemCount: 4,
-                        itemBuilder: (_, index) => TBrandCard(showborder: true,),
-                      ),
+                        itemCount: brandController.featuredBrands.length,
+                        itemBuilder: (_, index) {
+                          final brand=brandController.featuredBrands[index];
+                          return  TBrandCard(showborder: true, brand: brand,onTap: ()=>Get.to(()=>BrandProduct(brand: brand,)),);
+                        },
+                      );
+                     })
                     ],
                   ),
                 ),

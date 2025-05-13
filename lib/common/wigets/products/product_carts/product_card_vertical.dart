@@ -56,6 +56,7 @@ class ProductCardVertical extends StatelessWidget {
                       isNetworkimage: true,
                     ),
                   ),
+                  if(salePercentage!=null)
                   Positioned(
                     top: 8,
                     left: 0,

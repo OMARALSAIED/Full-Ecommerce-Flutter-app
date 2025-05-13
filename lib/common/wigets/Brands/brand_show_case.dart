@@ -1,5 +1,6 @@
 import 'package:ecommerce/common/wigets/Brands/Brand_card.dart';
 import 'package:ecommerce/common/wigets/custom_shapes/rounded_conatiner.dart';
+import 'package:ecommerce/features/shop/models/BrandModel.dart';
 import 'package:ecommerce/util/constants/AppColors.dart';
 
 import 'package:ecommerce/util/constants/size.dart';
@@ -24,7 +25,7 @@ class BrandShowCase extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: TSize.spaceBtweenItems),
       child:  Column(
         children: [
-        TBrandCard(showborder: false,),
+        TBrandCard(showborder: false,brand: BrandModel.empty(),),
         const SizedBox(height: TSize.spaceBtweenItems,)
     ,
           Row(children: 
