@@ -8,6 +8,7 @@ import 'package:ecommerce/util/constants/size.dart';
 import 'package:ecommerce/util/helpers/cloudHelper_function.dart';
 import 'package:flutter/material.dart';
 
+
 class BrandProduct extends StatelessWidget {
   const BrandProduct({super.key,required this.brand});
 final BrandModel brand;
@@ -24,7 +25,7 @@ final BrandModel brand;
            TBrandCard(showborder: true,brand: brand),
            SizedBox(height: TSize.spaceBtwSections,),
            FutureBuilder(
-            future: controller.getBrandProduct(brand.Id),
+            future: controller.getBrandForproduct(brandId: brand.Id),
             builder: (context,snapshot){
 
               const loader=VerticalProductShimmer();

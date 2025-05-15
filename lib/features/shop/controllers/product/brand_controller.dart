@@ -49,16 +49,27 @@ class BrandController extends GetxController {
 }
 
 
-  //Get Brands for category
-  Future<List<ProductModel>> getBrandProduct(String brandId)async
+  //get Brands Specific Product from your data source
+  Future<List<BrandModel>> getBrandforCategory(String categoryId)async
   {
     try {
-  final product=await ProductRepository.instance.getProductFromBrand(brandId: brandId);
+  final product=await ProductRepository.instance.getBrandForCategory(categoryId);
   return product;
 } on Exception catch (e) {
   Loader.errorSnackbar(e.toString(), 'Oh Snap!');
   return [];
 }}
+  //Get Brands for category
+Future<List<ProductModel>> getBrandForproduct({required String brandId,int limit=-1})async
+  {
+    try {
+  final product=await ProductRepository.instance.getBrandForProduct(brandId: brandId,limit: limit);
+  return product;
+} on Exception catch (e) {
+  Loader.errorSnackbar(e.toString(), 'Oh Snap!');
+  return [];
+}}
+  
 
-  //get Brands Specific Product from your data source
+
   }

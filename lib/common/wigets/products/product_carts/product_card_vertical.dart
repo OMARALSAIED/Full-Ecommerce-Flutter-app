@@ -67,6 +67,7 @@ class ProductCardVertical extends StatelessWidget {
                         vertical: TSize.xs,
                       ),
                       child: Text(
+                        // ignore: unnecessary_null_comparison
                         salePercentage != null ? "$salePercentage%" : '',
                         style: Theme.of(context).textTheme.labelLarge!.apply(
                           color: AppColor.kblack,

@@ -4,7 +4,7 @@ import 'package:ecommerce/common/wigets/app_bar/appbar.dart';
 import 'package:ecommerce/common/wigets/layout/grid_layout.dart';
 import 'package:ecommerce/common/wigets/text/sction_heading.dart';
 import 'package:ecommerce/features/shop/controllers/product/brand_controller.dart';
-import 'package:ecommerce/features/shop/models/BrandModel.dart';
+
 import 'package:ecommerce/features/shop/screens/Brands/brand_product.dart';
 import 'package:ecommerce/util/constants/AppColors.dart';
 import 'package:ecommerce/util/constants/size.dart';

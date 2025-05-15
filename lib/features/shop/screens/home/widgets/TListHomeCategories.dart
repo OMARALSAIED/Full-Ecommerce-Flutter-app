@@ -1,6 +1,7 @@
 import 'package:ecommerce/common/wigets/Shimmer/category_shimmer.dart';
 import 'package:ecommerce/common/wigets/TverticalImageTextCategories/TverticalImageTextCategories.dart';
 import 'package:ecommerce/features/shop/controllers/category.controller.dart';
+import 'package:ecommerce/features/shop/models/category_model.dart';
 import 'package:ecommerce/features/shop/screens/sub_category/sub_category.dart';
 
 import 'package:ecommerce/util/constants/AppColors.dart';
@@ -42,9 +43,7 @@ class TListHomeCategories extends StatelessWidget {
               image: category.Image,
               title: category.Name,
               textcolor: AppColor.kwhite,
-              onTap: () {
-                Get.to(SubCategoryScreen());
-              },
+              onTap: () =>Get.to(()=>SubCategoryScreen()),
             );
           },
         ),

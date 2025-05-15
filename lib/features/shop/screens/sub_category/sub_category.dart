@@ -2,15 +2,19 @@ import 'package:ecommerce/common/wigets/app_bar/appbar.dart';
 import 'package:ecommerce/common/wigets/images/TRoundedImage.dart';
 import 'package:ecommerce/common/wigets/products/product_carts/product_card_horizntal.dart';
 import 'package:ecommerce/common/wigets/text/sction_heading.dart';
+
 import 'package:ecommerce/util/constants/images_strings.dart';
 import 'package:ecommerce/util/constants/size.dart';
 import 'package:flutter/material.dart';
 
+
 class SubCategoryScreen extends StatelessWidget {
   const SubCategoryScreen({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
+ 
     return Scaffold(
       appBar: TAppbar(title: Text('Sports'),showBackArrow: true,),
       body: SingleChildScrollView(

@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce/features/shop/models/BrandModel.dart';
+
 import 'package:ecommerce/features/shop/models/ProductModel.dart';
 import 'package:ecommerce/util/constants/enums.dart';
 import 'package:ecommerce/util/helpers/firebase_storge_service.dart';
@@ -13,58 +15,56 @@ class ProductRepository extends GetxController {
 
   final _db = FirebaseFirestore.instance;
 
-Future<List<ProductModel>> getFeaturedProduct() async {
-  try {
-    final snapshot = await _db
-        .collection('Products')
-        .where('IsFeatured', isEqualTo: true)
-        .limit(4)
-        .get();
+  Future<List<ProductModel>> getFeaturedProduct() async {
+    try {
+      final snapshot =
+          await _db
+              .collection('Products')
+              .where('IsFeatured', isEqualTo: true)
+              .limit(4)
+              .get();
 
-    print("Documents fetched: ${snapshot.docs.length}");
-    for (var doc in snapshot.docs) {
-      print("Fetched Data: ${doc.data()}");
+      print("Documents fetched: ${snapshot.docs.length}");
+      for (var doc in snapshot.docs) {
+        print("Fetched Data: ${doc.data()}");
+      }
+
+      return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+    } catch (e) {
+      print("Error in getFeaturedProduct: $e");
+      throw 'Something Went Wrong. Please try again';
     }
-
-    return snapshot.docs
-        .map((e) => ProductModel.fromSnapshot(e))
-        .toList();
-  } catch (e) {
-    print("Error in getFeaturedProduct: $e");
-    throw 'Something Went Wrong. Please try again';
   }
-}
-Future<List<ProductModel>> getAllFeaturedProduct() async {
-  try {
-    final snapshot = await _db
-        .collection('Products')
-        .where('IsFeatured', isEqualTo: true)
-       
-        .get();
 
-    print("Documents fetched: ${snapshot.docs.length}");
-    for (var doc in snapshot.docs) {
-      print("Fetched Data: ${doc.data()}");
+  Future<List<ProductModel>> getAllFeaturedProduct() async {
+    try {
+      final snapshot =
+          await _db
+              .collection('Products')
+              .where('IsFeatured', isEqualTo: true)
+              .get();
+
+      print("Documents fetched: ${snapshot.docs.length}");
+      for (var doc in snapshot.docs) {
+        print("Fetched Data: ${doc.data()}");
+      }
+
+      return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
+    } catch (e) {
+      print("Error in getFeaturedProduct: $e");
+      throw 'Something Went Wrong. Please try again';
     }
-
-    return snapshot.docs
-        .map((e) => ProductModel.fromSnapshot(e))
-        .toList();
-  } catch (e) {
-    print("Error in getFeaturedProduct: $e");
-    throw 'Something Went Wrong. Please try again';
   }
-}
 
-
-Future<List<ProductModel>> fetchProductsByQuery(Query query) async {
-  try {
-  
-      final querySnapshot=await query.get();
-      final List<ProductModel> productList=querySnapshot.docs.map((doc)=>ProductModel.fromQuerySnapshot(doc)).toList();
+  Future<List<ProductModel>> fetchProductsByQuery(Query query) async {
+    try {
+      final querySnapshot = await query.get();
+      final List<ProductModel> productList =
+          querySnapshot.docs
+              .map((doc) => ProductModel.fromQuerySnapshot(doc))
+              .toList();
       return productList;
-
-  }   on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e) {
       throw SthandelAuthExpetions(e.code).message;
     } on FirebaseException catch (e) {
       throw SthandelAuthExpetions(e.code).message;
@@ -74,33 +74,128 @@ Future<List<ProductModel>> fetchProductsByQuery(Query query) async {
       throw SthandelPlatformExceptions(e.code).message;
     } catch (e) {
       throw 'Somthing Went Wrong Please try again';
-    
+    }
+  }
+
+  Future<List<ProductModel>> getBrandForProduct({
+    required String brandId,
+    int limit = -1,
+  }) async {
+    try {
+      final querySnapshot =
+          limit == -1
+              ? await _db
+                  .collection('Products')
+                  .where('Brand.Id', isEqualTo: brandId)
+                  .get()
+              : await _db
+                  .collection('Products')
+                  .where('Brand.Id', isEqualTo: brandId)
+                  .limit(limit)
+                  .get();
+      final products =
+          querySnapshot.docs
+              .map((doc) => ProductModel.fromSnapshot(doc))
+              .toList();
+      return products;
+    } on FirebaseAuthException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on FirebaseException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on SthandelFormatExceptions catch (_) {
+      throw SthandelFormatExceptions();
+    } on SthandelPlatformExceptions catch (e) {
+      throw SthandelPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'Somthing Went getBrandForProduct Wrong Please try again';
+    }
+  }
+
+  Future<List<BrandModel>> getBrandForCategory(String categoryId) async {
+    try {
+      QuerySnapshot brandCategoryQuery =
+          await _db
+              .collection('Brandcategory')
+              .where('CategoryId', isEqualTo: categoryId)
+              .get();
+      List<String> brandId =
+          brandCategoryQuery.docs
+              .map((doc) => doc['brandId'] as String)
+              .toList();
+
+      final brandsQuery =
+          await _db
+              .collection('Brands')
+              .where(FieldPath.documentId, whereIn: brandId)
+              .limit(2)
+              .get();
+      List<BrandModel> brand =
+          brandsQuery.docs.map((doc) => BrandModel.fromSnapshot(doc)).toList();
+
+      return brand;
+    } on FirebaseAuthException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on FirebaseException catch (e) {
+      throw SthandelAuthExpetions(e.code).message;
+    } on SthandelFormatExceptions catch (_) {
+      throw SthandelFormatExceptions();
+    } on SthandelPlatformExceptions catch (e) {
+      throw SthandelPlatformExceptions(e.code).message;
+    } catch (e) {
+      throw 'Somthing Went Wrong getBrandForCategory Please try again';
+    }
+  }
+
+Future<List<ProductModel>> getProductForCategory({
+  required String categoryId,
+  int limit = 4,
+}) async {
+  try {
+    print("Fetching products for categoryId: $categoryId with limit: $limit");
+
+    // جلب معرّفات المنتجات المرتبطة بالفئة
+    Query query = _db
+        .collection('ProductCategory')
+        .where('CategoryId', isEqualTo: categoryId);
+
+    // إذا كان limit أكبر من 0، نقوم بتطبيقه
+    if (limit > 0) {
+      query = query.limit(limit);
     }
 
-}
+    final querySnapshot = await query.get();
 
-Future<List<ProductModel>> getProductFromBrand({required String brandId,int limit=-1})async
-{
-  try{
-    final querySnapshot=limit==-1 ?await _db.collection('Products').where('Brand.Id',isEqualTo: brandId).get():
-    await _db.collection('Products').where('Brand.Id',isEqualTo: brandId).limit(limit).get();
-    final products=querySnapshot.docs.map((doc)=>ProductModel.fromSnapshot(doc)).toList();
+    List<String> productIds = querySnapshot.docs
+        .map((doc) => doc['productId'] as String)
+        .toList();
+
+    print("Fetched Product IDs: $productIds");
+
+    if (productIds.isEmpty) {
+      print("No product IDs found for categoryId: $categoryId");
+      return [];
+    }
+
+    // جلب المنتجات بناءً على معرّفاتها
+    final productQuery = await _db
+        .collection('Products')
+        .where(FieldPath.documentId, whereIn: productIds)
+        .get();
+
+    List<ProductModel> products = productQuery.docs
+        .map((doc) => ProductModel.fromSnapshot(doc))
+        .toList();
+
     return products;
-
-  }on FirebaseAuthException catch (e) {
-      throw SthandelAuthExpetions(e.code).message;
-    } on FirebaseException catch (e) {
-      throw SthandelAuthExpetions(e.code).message;
-    } on SthandelFormatExceptions catch (_) {
-      throw SthandelFormatExceptions();
-    } on SthandelPlatformExceptions catch (e) {
-      throw SthandelPlatformExceptions(e.code).message;
-    } catch (e) {
-      throw 'Somthing Went Wrong Please try again';
-    
-    }
+  } catch (e) {
+    print("Error in getProductForCategory: $e");
+    throw 'Something went wrong in getProductForCategory. Please try again';
+  }
 }
- Future<void> uploadDummyData(List<ProductModel> products) async {
+
+
+
+  Future<void> uploadDummyData(List<ProductModel> products) async {
     try {
       final storge = Get.put(FirebaseStorgeService());
 
@@ -165,5 +260,4 @@ Future<List<ProductModel>> getProductFromBrand({required String brandId,int limi
       throw 'Somthing Went Wrong Please try again';
     }
   }
-
 }

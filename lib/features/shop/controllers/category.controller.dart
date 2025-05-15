@@ -1,5 +1,7 @@
 
 import 'package:ecommerce/data/repositories/categories/category_repository.dart.dart';
+import 'package:ecommerce/data/repositories/product/product_repository.dart';
+import 'package:ecommerce/features/shop/models/ProductModel.dart';
 import 'package:ecommerce/features/shop/models/category_model.dart';
 import 'package:ecommerce/util/popups/loader.dart';
 import 'package:get/get.dart';
@@ -58,5 +60,11 @@ class CategoryController extends GetxController
   }
   // -- Load selected category data
   // Get Category or Sub-Category Products.
+  Future<List<ProductModel>> getCategoryProdycts({required String categoryId,int limit=4})async
+  {
+    final products=await ProductRepository.instance.getProductForCategory(categoryId:categoryId,limit: limit);
+    return products;
+
+  }
 
 }

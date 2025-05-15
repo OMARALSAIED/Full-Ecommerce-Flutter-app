@@ -50,7 +50,9 @@ class HomeScreen extends StatelessWidget {
                         TSectionHeading(
                           title: "Popular Categories", // ✅ Fixed typo here
                           textcolor: Colors.white,
-                          onPressed: () {},
+                          onPressed: () {
+                            
+                          },
                           showActionButton: true,
                         ),
 

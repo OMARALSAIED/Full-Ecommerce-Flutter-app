@@ -24,6 +24,9 @@ class CloudhelperFunction {
   static Widget? checkMultieRecordSate<T>( {required AsyncSnapshot<List<T>>snapshot,Widget? loader ,Widget? error,Widget? nothingFound})
   {
     
+    if (snapshot.hasData) {
+  print("Data available: ${snapshot.data}");
+}
 
     if(snapshot.connectionState==ConnectionState.waiting)
     {
@@ -40,6 +43,7 @@ class CloudhelperFunction {
       if(error!=null) return error;
       return const Center(child: Text('Something went wrong.'),);
     }
+
     return null;
   }
 
