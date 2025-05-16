@@ -1,3 +1,5 @@
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce/features/shop/models/BrandModel.dart';
 
@@ -76,6 +78,40 @@ class ProductRepository extends GetxController {
       throw 'Somthing Went Wrong Please try again';
     }
   }
+
+   Future<List<ProductModel>> getFavouriteProduct(List<String> productIds) async {
+  try {
+    if (productIds.isEmpty) {
+      print('No product IDs provided.');
+      return [];
+    }
+
+    print('Product IDs: $productIds');
+
+    final snapshot = await _db
+        .collection('Products')
+        .where(FieldPath.documentId, whereIn: productIds)
+        .get();
+
+    print('Products fetched: ${snapshot.docs.length}');
+
+    return snapshot.docs
+        .map((querySnapshot) => ProductModel.fromSnapshot(querySnapshot))
+        .toList();
+  } on FirebaseAuthException catch (e) {
+    throw SthandelAuthExpetions(e.code).message;
+  } on FirebaseException catch (e) {
+    throw SthandelAuthExpetions(e.code).message;
+  } on SthandelFormatExceptions catch (_) {
+    throw SthandelFormatExceptions();
+  } on SthandelPlatformExceptions catch (e) {
+    throw SthandelPlatformExceptions(e.code).message;
+  } catch (e) {
+    print('Error in getFavouriteProduct: $e');
+    throw 'Something went wrong. Please try again.';
+  }
+}
+
 
   Future<List<ProductModel>> getBrandForProduct({
     required String brandId,

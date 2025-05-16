@@ -1,6 +1,6 @@
 import 'package:ecommerce/common/wigets/custom_shapes/rounded_conatiner.dart';
-import 'package:ecommerce/common/wigets/icons/circularfav_icon.dart';
 import 'package:ecommerce/common/wigets/images/TRoundedImage.dart';
+import 'package:ecommerce/common/wigets/products/product_carts/favourit_icon.dart';
 import 'package:ecommerce/common/wigets/text/brandTitleWithVerifiedIcon.dart';
 import 'package:ecommerce/common/wigets/text/product_price_text.dart';
 import 'package:ecommerce/common/wigets/text/product_title_text.dart';
@@ -78,10 +78,7 @@ class ProductCardVertical extends StatelessWidget {
                   Positioned(
                     right: 0,
                     top: 0,
-                    child: CircularFavIcon(
-                      icon: Iconsax.heart5,
-                      color: AppColor.kred,
-                    ),
+                    child: FavourIcon(prooductId: product.id,),
                   ),
                 ],
               ),
@@ -138,3 +135,4 @@ class ProductCardVertical extends StatelessWidget {
     );
   }
 }
+

@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce/common/wigets/app_bar/appbar.dart';
 import 'package:ecommerce/common/wigets/custom_shapes/curved_edges/curved_edges_widget.dart';
-import 'package:ecommerce/common/wigets/icons/circularfav_icon.dart';
 import 'package:ecommerce/common/wigets/images/TRoundedImage.dart';
+import 'package:ecommerce/common/wigets/products/product_carts/favourit_icon.dart';
 import 'package:ecommerce/features/shop/controllers/product/images_controller.dart';
 import 'package:ecommerce/features/shop/models/ProductModel.dart';
 import 'package:ecommerce/util/constants/AppColors.dart';
@@ -10,7 +10,7 @@ import 'package:ecommerce/util/constants/size.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
-import 'package:iconsax/iconsax.dart';
+
 
 class ProductImageSlider extends StatelessWidget {
   const ProductImageSlider({
@@ -62,6 +62,7 @@ class ProductImageSlider extends StatelessWidget {
                   itemCount: images.length,
                   itemBuilder:
                       (_, index) => Obx(() {
+                        // ignore: unused_local_variable
                         final imageseleCted =
                             controller.selectedProductImage.value ==
                             images[index];
@@ -87,7 +88,7 @@ class ProductImageSlider extends StatelessWidget {
               showBackArrow: true,
               actions: [
                 const SizedBox(width: 250),
-                CircularFavIcon(icon: Iconsax.heart5, color: AppColor.kred),
+                FavourIcon(prooductId: product.id,),
               ],
             ),
           ],

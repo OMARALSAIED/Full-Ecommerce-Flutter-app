@@ -3,6 +3,7 @@ import 'package:ecommerce/features/authentication/screens/onborading/onborading.
 import 'package:ecommerce/features/authentication/screens/sigup/veryifyemail.dart';
 import 'package:ecommerce/navigation_menu.dart';
 import 'package:ecommerce/util/helpers/handelExpetions.dart';
+import 'package:ecommerce/util/local_storage/local_storge.dart';
 import 'package:ecommerce/util/popups/full_screen_loader.dart';
 import 'package:ecommerce/util/popups/loader.dart';
 import 'package:ecommerce/util/valdatores/auth_Exceptions.dart';
@@ -32,6 +33,7 @@ class AuthenticationRepositry extends GetxController {
   void screenRedirect() async {
     final user = _auth.currentUser;
     if (user != null) {
+      await TLocalStorage.init(user.uid);
       final updatedUser = _auth.currentUser; // استرجع التحديث الجديد بعد reload
 
       if (updatedUser != null && updatedUser.emailVerified) {

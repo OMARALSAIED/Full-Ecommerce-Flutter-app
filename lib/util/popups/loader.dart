@@ -1,4 +1,5 @@
 import 'package:ecommerce/util/constants/AppColors.dart';
+import 'package:ecommerce/util/helpers/helper_function.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -79,6 +80,27 @@ class Loader {
         isDismissible: true,
         margin: const EdgeInsets.all(10),
         borderRadius: 8,
+      ),
+    );
+  }
+
+  static CustomTost({required message})
+  
+  {
+    ScaffoldMessenger.of(Get.context!).showSnackBar(
+      SnackBar(
+        elevation: 0,
+        duration: const Duration(seconds: 3),
+        backgroundColor: AppColor.transparent,
+        content: Container(
+          padding:  EdgeInsets.all(12.0),
+          margin: const EdgeInsets.symmetric(horizontal: 30),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            color: THelperfunction.isDarkMode(Get.context!) ? AppColor.kblack.withOpacity(0.9) : AppColor.kwhite.withOpacity(0.9)
+          ),
+          child: Center(child: Text(message,style: Theme.of(Get.context!).textTheme.labelLarge,),),
+        )
       ),
     );
   }

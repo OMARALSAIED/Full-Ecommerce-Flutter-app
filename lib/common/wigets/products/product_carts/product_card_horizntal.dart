@@ -1,6 +1,6 @@
 import 'package:ecommerce/common/wigets/custom_shapes/rounded_conatiner.dart';
-import 'package:ecommerce/common/wigets/icons/circularfav_icon.dart';
 import 'package:ecommerce/common/wigets/images/TRoundedImage.dart';
+import 'package:ecommerce/common/wigets/products/product_carts/favourit_icon.dart';
 import 'package:ecommerce/common/wigets/text/brandTitleWithVerifiedIcon.dart';
 import 'package:ecommerce/common/wigets/text/product_price_text.dart';
 import 'package:ecommerce/common/wigets/text/product_title_text.dart';
@@ -13,6 +13,8 @@ import 'package:iconsax/iconsax.dart';
 
 class TProdcutCardHorizntal extends StatelessWidget {
   const TProdcutCardHorizntal({super.key});
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -69,10 +71,7 @@ class TProdcutCardHorizntal extends StatelessWidget {
                   top: 0,
                   bottom: 160,
 
-                  child: CircularFavIcon(
-                    icon: Iconsax.heart5,
-                    color: AppColor.kred,
-                  ),
+                  child: FavourIcon(prooductId:'',)
                 ),
               ],
             ),

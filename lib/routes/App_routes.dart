@@ -16,7 +16,7 @@ abstract class AppRouter
 
   static final pages=[  
     GetPage(name: SRouets.orders,page: () => const OredersScreen(),),
-    GetPage(name: SRouets.wishlist,page: () => const FavouriteScreen(),),
+    GetPage(name: SRouets.wishlist,page: () =>  FavouriteScreen(),),
    GetPage(name: SRouets.address,page: () => const AddressScreen(),),
     GetPage(name: SRouets.settings,page: () => const SettingsScreen(),),
     GetPage(name: SRouets.CartScreen,page: () => const Cartscreen(),),];
